@@ -78,7 +78,7 @@ void init()
   glGenTextures(1, &texture);
   glBindTexture(GL_TEXTURE_2D, texture);
 
-  if(glfwLoadTexture2D("zero.tga", 0)) { 
+  if(glfwLoadTexture2D("sprites.tga", 0)) { 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
   } else exit(EXIT_FAILURE);
