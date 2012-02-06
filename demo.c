@@ -15,6 +15,8 @@ int realHeight = 576;
 
 GLuint texture;
 
+int renderToFBO = 1;
+
 struct {
   GLfloat x;
   GLfloat y;
@@ -223,6 +225,11 @@ void draw(double deltaTime)
   if(position.x > fauxWidth)
   {
     position.x = 1.0f - size.x;
+    // if(renderToFBO) {
+    //   renderToFBO = 0;
+    // } else {
+    //   renderToFBO = 1;
+    // }
   }
   // position.y += ZERO_VELOCITY * deltaTime;
 
@@ -256,6 +263,8 @@ int initFrameBuffer()
   glBindTexture(GL_TEXTURE_2D, fbo_texture);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, realWidth, realHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
   glBindTexture(GL_TEXTURE_2D, 0);
  
@@ -380,7 +389,7 @@ int main (int argc, char const *argv[])
   initFrameBuffer();
 
   double lastTime = glfwGetTime();
-
+  double elapsedTime = 0.0f;
   draw(0);
   glfwSwapBuffers();
 
@@ -392,14 +401,19 @@ int main (int argc, char const *argv[])
     {
       lastTime = thisTime;
 
-      glBindFramebuffer(GL_FRAMEBUFFER, fbo);
-      draw(deltaTime);
+      if(!renderToFBO) {
+        draw(deltaTime);
+      } else {
+        glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+        draw(deltaTime);
 
-      glBindFramebuffer(GL_FRAMEBUFFER, 0);
-      drawFramebuffer();
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        drawFramebuffer();          
+      }
 
       glfwSwapBuffers();
     }
+    elapsedTime += deltaTime;
 
     running = !glfwGetKey(GLFW_KEY_ESC) &&
       glfwGetWindowParam(GLFW_OPENED);
