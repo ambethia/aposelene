@@ -251,7 +251,8 @@ void draw(double deltaTime)
 /* Global */
 GLuint fbo, fbo_texture, rbo_depth;
 GLuint vbo_fbo_vertices;
-GLuint program_postproc, attribute_v_coord_postproc, uniform_fbo_texture;
+GLuint program_postproc, attribute_v_coord_postproc,
+  uniform_fbo_texture, uniform_screen_sizes;
 
 int initFrameBuffer()
 {
@@ -306,12 +307,8 @@ int initFrameBuffer()
     return GL_FALSE;
   }
  
-  char *uniform_name = "fbo_texture";
-  uniform_fbo_texture = glGetUniformLocation(program_postproc, uniform_name);
-  if (uniform_fbo_texture == -1) {
-    fprintf(stderr, "Could not bind uniform %s\n", uniform_name);
-    return 0;
-  }
+  uniform_screen_sizes = glGetUniformLocation(program_postproc, "screen_sizes");
+  uniform_fbo_texture = glGetUniformLocation(program_postproc, "fbo_texture");
 
   return GL_TRUE;
 }
@@ -324,6 +321,11 @@ void drawFramebuffer()
   glUseProgram(program_postproc);
   glBindTexture(GL_TEXTURE_2D, fbo_texture);
   glUniform1i(uniform_fbo_texture, 0);
+
+  // mash them into one vector uniform;
+  glUniform4f(uniform_screen_sizes, (float)fauxWidth,
+    (float)fauxHeigth, (float)realWidth, (float)realHeight);
+
   glEnableVertexAttribArray(attribute_v_coord_postproc); 
   glBindBuffer(GL_ARRAY_BUFFER, vbo_fbo_vertices);
 

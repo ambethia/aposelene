@@ -14,7 +14,3 @@ Result so far:
 ![Demo](https://github.com/ambethia/zero-demo/raw/master/demo.png)
 
 ![Demo](https://github.com/ambethia/zero-demo/raw/master/sprites.png)
-
-TODO:
-
-Just need to add the "superpixel" gradient.
