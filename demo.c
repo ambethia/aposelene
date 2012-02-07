@@ -6,10 +6,17 @@
 #include "utilities.h"
 
 int fauxWidth = 160;
-int fauxHeigth = 144;
+int fauxHeight = 144;
+
+int scaleFactor = 4;
 
 int realWidth = 640;
 int realHeight = 576;
+
+int clipX = 0;
+int clipY = 0;
+int clipWidth = 640;
+int clipHeight = 576;
 
 #define DRAW_RATE 0.05f
 
@@ -73,9 +80,7 @@ void init()
   // Initialize Camera
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  glOrtho(0, fauxWidth, 0, fauxHeigth, -1, 1);
-
-  glActiveTexture(GL_TEXTURE0);
+  glOrtho(0, fauxWidth, 0, fauxHeight, -1, 1);
 
   glGenTextures(1, &texture);
   glBindTexture(GL_TEXTURE_2D, texture);
@@ -123,7 +128,7 @@ void drawBackground()
   GLfloat s0 = xRatio * xOffset;
   GLfloat t0 = yRatio * yOffset;
   GLfloat s1 = xRatio * fauxWidth + s0;
-  GLfloat t1 = yRatio * fauxHeigth + t0;
+  GLfloat t1 = yRatio * fauxHeight + t0;
 
   // Round off so the animation aren't "subpixel" in relation to the "super pixels".
   GLint rX = 0;
@@ -131,8 +136,8 @@ void drawBackground()
 
   vertices.v0.x = rX;             vertices.v0.y = rY;
   vertices.v1.x = rX + fauxWidth; vertices.v1.y = rY;
-  vertices.v2.x = rX;             vertices.v2.y = rY + fauxHeigth;
-  vertices.v3.x = rX + fauxWidth; vertices.v3.y = rY + fauxHeigth;
+  vertices.v2.x = rX;             vertices.v2.y = rY + fauxHeight;
+  vertices.v3.x = rX + fauxWidth; vertices.v3.y = rY + fauxHeight;
 
   if (INVERT_TEXTURE_COORDS)
   {
@@ -266,13 +271,13 @@ int initFrameBuffer()
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, realWidth, realHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, fauxWidth, fauxHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
   glBindTexture(GL_TEXTURE_2D, 0);
  
   /* Depth buffer */
   glGenRenderbuffers(1, &rbo_depth);
   glBindRenderbuffer(GL_RENDERBUFFER, rbo_depth);
-  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, realWidth, realWidth);
+  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, fauxWidth, fauxHeight);
   glBindRenderbuffer(GL_RENDERBUFFER, 0);
  
   /* Framebuffer to link everything together */
@@ -324,7 +329,7 @@ void drawFramebuffer()
 
   // mash them into one vector uniform;
   glUniform4f(uniform_screen_sizes, (float)fauxWidth,
-    (float)fauxHeigth, (float)realWidth, (float)realHeight);
+  (float)fauxHeight, (float)clipWidth, (float)clipHeight);
 
   glEnableVertexAttribArray(attribute_v_coord_postproc); 
   glBindBuffer(GL_ARRAY_BUFFER, vbo_fbo_vertices);
@@ -356,20 +361,17 @@ void cleanupFrameBuffer()
 }
 
 void onReshape(int width, int height) {
-  realWidth = width;
-  realHeight = height;
-  glViewport(0, 0, realWidth, realHeight);
+  // TODO: adjust scaleFactor for best fit to the new window size
 
-  // TODO: Maintain aspect ratio
+  clipWidth = fauxWidth * scaleFactor;
+  clipHeight = fauxHeight * scaleFactor;
 
-  // Rescale FBO and RBO as well
-  glBindTexture(GL_TEXTURE_2D, fbo_texture);
-  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, realWidth, realHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
-  glBindTexture(GL_TEXTURE_2D, 0);
-  
-  glBindRenderbuffer(GL_RENDERBUFFER, rbo_depth);
-  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, realWidth, realHeight);
-  glBindRenderbuffer(GL_RENDERBUFFER, 0);
+  clipX = (width - clipWidth) / 2;
+  clipY = (height - clipHeight) / 2;
+
+  // This call to glViewport may be redundant because it's called in every frame.
+  glViewport(clipX, clipY, clipWidth, clipHeight);
+  glScissor(clipX, clipY, clipWidth, clipHeight);
 }
 
 int main (int argc, char const *argv[])
@@ -392,8 +394,6 @@ int main (int argc, char const *argv[])
 
   double lastTime = glfwGetTime();
   double elapsedTime = 0.0f;
-  draw(0);
-  glfwSwapBuffers();
 
   while (running) {
     double thisTime = glfwGetTime();
@@ -402,17 +402,19 @@ int main (int argc, char const *argv[])
     if(deltaTime >= DRAW_RATE)
     {
       lastTime = thisTime;
-
       if(!renderToFBO) {
         draw(deltaTime);
       } else {
+        // Render off screen framebuffer
         glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+        glViewport(0, 0, fauxWidth, fauxHeight);
         draw(deltaTime);
 
+        // Render that framebuffer now with post effects
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        glViewport(clipX, clipY, clipWidth, clipHeight);
         drawFramebuffer();          
       }
-
       glfwSwapBuffers();
     }
     elapsedTime += deltaTime;
