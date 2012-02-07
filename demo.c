@@ -5,6 +5,14 @@
 
 #include "utilities.h"
 
+#define DRAW_RATE 0.05f
+#define INVERT_TEXTURE_COORDS 1
+#define ZERO_BITMAP_WIDTH 256
+#define ZERO_BITMAP_HEIGHT 512
+#define ZERO_NUM_FRAMES 10
+#define ZERO_VELOCITY 40
+#define ZERO_FRAME_STEP 10
+
 int fauxWidth = 160;
 int fauxHeight = 144;
 
@@ -17,8 +25,6 @@ int clipX = 0;
 int clipY = 0;
 int clipWidth = 640;
 int clipHeight = 576;
-
-#define DRAW_RATE 0.05f
 
 GLuint texture;
 
@@ -64,14 +70,6 @@ const unsigned int zero_texcoords[] = {
  // Background
   0, 234, 160, 144
 };
-
-#define ZERO_BITMAP_WIDTH 256
-#define ZERO_BITMAP_HEIGHT 512
-#define ZERO_NUM_FRAMES 10
-#define ZERO_VELOCITY 40
-#define ZERO_FRAME_STEP 10
-
-#define INVERT_TEXTURE_COORDS 1
 
 void init()
 {
@@ -361,7 +359,11 @@ void cleanupFrameBuffer()
 }
 
 void onReshape(int width, int height) {
-  // TODO: adjust scaleFactor for best fit to the new window size
+  // Adjust scaleFactor to fit inside the screen
+  scaleFactor = 1;
+  while(fauxWidth  * (scaleFactor + 1) <= width &&
+        fauxHeight * (scaleFactor + 1) <= height)
+    ++scaleFactor;
 
   clipWidth = fauxWidth * scaleFactor;
   clipHeight = fauxHeight * scaleFactor;
@@ -369,8 +371,8 @@ void onReshape(int width, int height) {
   clipX = (width - clipWidth) / 2;
   clipY = (height - clipHeight) / 2;
 
-  // This call to glViewport may be redundant because it's called in every frame.
-  glViewport(clipX, clipY, clipWidth, clipHeight);
+  // This call to glViewport would be redundant because it's called in every frame.
+  // glViewport(clipX, clipY, clipWidth, clipHeight);
   glScissor(clipX, clipY, clipWidth, clipHeight);
 }
 
