@@ -58,14 +58,6 @@ struct ASColor {
 };
 typedef struct ASColor ASColor;
 
-static inline ASColor ASColorMake(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
-{
-  ASColor color;
-  color.red = red;
-  color.green = green;
-  color.blue = blue;
-  color.alpha = alpha;
-  return color;
-}
+inline ASColor ASColorMake(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
 
 #endif

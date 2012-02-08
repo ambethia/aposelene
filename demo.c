@@ -105,6 +105,15 @@ void init()
   glBindTexture(GL_TEXTURE_2D, 0);
 }
 
+void drawType()
+{
+  ASFont *font;
+  asFontCreate(font, "assets/fonts/system");
+  //asFontDraw(...);
+
+  asFontDestroy(font);
+}
+
 // Sprite drawing stuff that will get refactored to
 // sprite objects that draw themselves.
 void drawBackground()
@@ -240,6 +249,7 @@ void draw(double deltaTime)
 
   drawBackground();
   drawZero();
+  drawType();
 
   glBindTexture(GL_TEXTURE_2D, 0);
 

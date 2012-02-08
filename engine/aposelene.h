@@ -9,6 +9,7 @@
 #define _aposelene_h
 
 #include "common.h"
+#include "font.h"
 #include "utility.h"
 
 #endif
