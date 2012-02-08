@@ -25,11 +25,9 @@ struct ASFont {
 };
 typedef struct ASFont ASFont;
 
-void asFontCreate(ASFont *self, char *fontname);
+ASFont * asFontCreate(char *fontname);
 
 void asFontDestroy(ASFont *self);
-
-void asFontColorFilter(ASFont *self, ASColor color);
 
 void asFontDraw(ASFont *self, ASVector2D position, char *text);
 

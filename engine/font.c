@@ -8,27 +8,24 @@
 #include <stdlib.h>
 #include "font.h"
 
-void asFontCreate(ASFont *self, char *fontname)
+ASFont * asFontCreate(char *fontname)
 {
-  ASFont *font = self;
-  font = malloc(sizeof(ASFont));
-  asFontColorFilter(font, ASColorMake(1.0f, 1.0f, 1.0f, 1.0f));
+  ASFont *font; 
+  font = (ASFont *)malloc(sizeof(ASFont));
+
+  font->colorFilter = ASColorMake(1.0f, 1.0f, 1.0f, 1.0f);
+
+  return font;
 }
 
 void asFontDestroy(ASFont *self)
 {
-  ASFont *font = self;
-  if(font) {
+  if(self) {
     // TODO: free characters, etc.
-    // free(font);
+    free(self);
   } 
 }
                 
-void asFontColorFilter(ASFont *self, ASColor color)
-{
-  self->colorFilter = color;
-}
-
 void asFontDraw(ASFont *self, ASVector2D position, char *text)
 {
 }

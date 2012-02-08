@@ -24,11 +24,11 @@ static void *asFileContents(const char *filename, GLint *length)
   }
 
   fseek(f, 0, SEEK_END);
-  *length = ftell(f);
+  *length = (GLint)ftell(f);
   fseek(f, 0, SEEK_SET);
 
   buffer = malloc(*length+1);
-  *length = fread(buffer, 1, *length, f);
+  *length = (GLint)fread(buffer, 1, *length, f);
   fclose(f);
   ((char*)buffer)[*length] = '\0';
 

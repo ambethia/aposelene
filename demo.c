@@ -10,7 +10,7 @@
 #include <math.h>
 #include <GL/glfw.h>
 
-#include "engine/aposelene.h"
+#include "aposelene.h"
 
 #define DRAW_RATE 0.05f
 #define INVERT_TEXTURE_COORDS 1
@@ -78,7 +78,7 @@ void init()
   glGenTextures(1, &texture);
   glBindTexture(GL_TEXTURE_2D, texture);
 
-  if(glfwLoadTexture2D("assets/textures/sprites.tga", 0)) { 
+  if(glfwLoadTexture2D("Assets/Textures/sprites.tga", 0)) { 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
   } else exit(EXIT_FAILURE);
@@ -107,10 +107,7 @@ void init()
 
 void drawType()
 {
-  ASFont *font;
-  asFontCreate(font, "assets/fonts/system");
-  //asFontDraw(...);
-
+  ASFont *font = asFontCreate("Assets/Fonts/system");
   asFontDestroy(font);
 }
 
@@ -307,8 +304,8 @@ int initFrameBuffer()
 
   /* Post-processing */
   program_postproc = asCreateShaderProgram(4,
-    GL_VERTEX_SHADER, "assets/shaders/post.v.glsl",
-    GL_FRAGMENT_SHADER, "assets/shaders/post.f.glsl");
+    GL_VERTEX_SHADER, "Assets/Shaders/post.v.glsl",
+    GL_FRAGMENT_SHADER, "Assets/Shaders/post.f.glsl");
 
   char *attribute_name = "v_coord";
   attribute_v_coord_postproc = glGetAttribLocation(program_postproc, attribute_name);
