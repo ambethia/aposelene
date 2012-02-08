@@ -1,10 +1,11 @@
 CC=gcc
 CFLAGS=-Wall -g
 LDFLAGS=-framework Cocoa -framework OpenGL -lglfw
+ENGINE=engine/utility.c
 
 all: demo
 
-demo: utilities.o
+demo: $(ENGINE)
 
 clean:
-	rm -rf *.o demo
+	rm -rf engine/*.o *.o demo

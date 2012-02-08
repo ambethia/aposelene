@@ -1,3 +1,10 @@
+//
+//  post.f.glsl
+//  Aposelene
+//
+//  Copyright 2012 Jason L Perry. All rights reserved.
+//
+
 uniform sampler2D fbo_texture;
 uniform vec4 screen_sizes;
 varying vec2 f_texcoord;

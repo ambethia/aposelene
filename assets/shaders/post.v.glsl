@@ -1,3 +1,10 @@
+//
+//  post.v.glsl
+//  Aposelene
+//
+//  Copyright 2012 Jason L Perry. All rights reserved.
+//
+
 attribute vec2 v_coord;
 varying vec2 f_texcoord;
  

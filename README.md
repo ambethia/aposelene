@@ -7,10 +7,10 @@ effects on top.
 
 A mock up of the initial concept:
 
-![Goal](https://github.com/ambethia/zero-demo/raw/master/goal.png)
+![Goal](https://github.com/ambethia/zero-demo/raw/master/example/goal.png)
 
 Result so far:
 
-![Demo](https://github.com/ambethia/zero-demo/raw/master/demo.png)
+![Demo](https://github.com/ambethia/zero-demo/raw/master/example/demo.png)
 
-![Demo](https://github.com/ambethia/zero-demo/raw/master/sprites.png)
+![Demo](https://github.com/ambethia/zero-demo/raw/master/example/sprites.png)

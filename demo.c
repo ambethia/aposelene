@@ -1,9 +1,16 @@
+//
+//  demo.c
+//  Aposelene
+//
+//  Copyright 2012 Jason L Perry. All rights reserved.
+//
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
 #include <GL/glfw.h>
 
-#include "utilities.h"
+#include "engine/aposelene.h"
 
 #define DRAW_RATE 0.05f
 #define INVERT_TEXTURE_COORDS 1
@@ -40,18 +47,6 @@ struct {
   GLuint y;
 } size;
 
-typedef struct {
-  GLfloat x;
-  GLfloat y;
-} Vector2D;
-
-typedef struct {
-  Vector2D v0;
-  Vector2D v1;
-  Vector2D v2;
-  Vector2D v3;
-} Quad;
-
 GLfloat frameIndex;
 
 // u,v,width,height
@@ -83,7 +78,7 @@ void init()
   glGenTextures(1, &texture);
   glBindTexture(GL_TEXTURE_2D, texture);
 
-  if(glfwLoadTexture2D("sprites.tga", 0)) { 
+  if(glfwLoadTexture2D("assets/textures/sprites.tga", 0)) { 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
   } else exit(EXIT_FAILURE);
@@ -117,8 +112,8 @@ void drawBackground()
   GLfloat xRatio = 1.0f / ZERO_BITMAP_WIDTH;
   GLfloat yRatio = 1.0f / ZERO_BITMAP_HEIGHT;
   
-  Quad vertices;
-  Quad coordinates;
+  ASQuadf vertices;
+  ASQuadf coordinates;
 
   int xOffset = zero_texcoords[40];
   int yOffset = zero_texcoords[41];
@@ -170,8 +165,8 @@ void drawZero()
   GLfloat xRatio = 1.0f / ZERO_BITMAP_WIDTH;
   GLfloat yRatio = 1.0f / ZERO_BITMAP_HEIGHT;
     
-  Quad vertices;
-  Quad coordinates;
+  ASQuadf vertices;
+  ASQuadf coordinates;
 
   int sIndex = round(frameIndex) * 4;
   int tIndex = round(frameIndex) * 4 + 1;
@@ -301,7 +296,9 @@ int initFrameBuffer()
   glBindBuffer(GL_ARRAY_BUFFER, 0);
 
   /* Post-processing */
-  program_postproc = createShaderProgram(4, GL_VERTEX_SHADER, "post.v.glsl", GL_FRAGMENT_SHADER, "post.f.glsl");
+  program_postproc = asCreateShaderProgram(4,
+    GL_VERTEX_SHADER, "assets/shaders/post.v.glsl",
+    GL_FRAGMENT_SHADER, "assets/shaders/post.f.glsl");
 
   char *attribute_name = "v_coord";
   attribute_v_coord_postproc = glGetAttribLocation(program_postproc, attribute_name);
