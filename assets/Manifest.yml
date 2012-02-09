@@ -1,0 +1,7 @@
+textures:
+  - sprites.png
+shaders:
+  - post.f.glsl
+  - post.v.glsl
+fonts:
+  - system.fnt

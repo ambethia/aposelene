@@ -38,7 +38,7 @@
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
       <PathRunnable
-         FilePath = "/Users/ambethia/Desktop/Aposelene/demo">
+         FilePath = "/Users/ambethia/Developer/Aposelene/demo">
       </PathRunnable>
       <AdditionalOptions>
       </AdditionalOptions>

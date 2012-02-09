@@ -14,6 +14,10 @@
 		BA00290C14E26CB400BA62A5 /* post.v.glsl in Resources */ = {isa = PBXBuildFile; fileRef = BA00290614E26CB400BA62A5 /* post.v.glsl */; };
 		BA00290D14E26CB400BA62A5 /* sprites.tga in Resources */ = {isa = PBXBuildFile; fileRef = BA00290814E26CB400BA62A5 /* sprites.tga */; };
 		BA00290E14E26D5A00BA62A5 /* demo.c in Sources */ = {isa = PBXBuildFile; fileRef = BAEADB2E14E269510080C5A0 /* demo.c */; };
+		BAA4BBEC14E2CEFB008A6342 /* texture.c in Sources */ = {isa = PBXBuildFile; fileRef = BAA4BBEB14E2CEFB008A6342 /* texture.c */; };
+		BAA4BBEF14E2CF22008A6342 /* texture.h in Headers */ = {isa = PBXBuildFile; fileRef = BAA4BBEE14E2CF22008A6342 /* texture.h */; };
+		BAA4BC0314E38E6F008A6342 /* sprites_texture.h in Headers */ = {isa = PBXBuildFile; fileRef = BAA4BBFA14E38581008A6342 /* sprites_texture.h */; };
+		BAA4BC0614E41522008A6342 /* test.c in Sources */ = {isa = PBXBuildFile; fileRef = BAA4BC0514E41522008A6342 /* test.c */; };
 		BAEADB0F14E267C10080C5A0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEADB0E14E267C10080C5A0 /* Cocoa.framework */; };
 		BAEADB1914E267C10080C5A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BAEADB1714E267C10080C5A0 /* InfoPlist.strings */; };
 		BAEADB1B14E267C10080C5A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BAEADB1A14E267C10080C5A0 /* main.m */; };
@@ -37,6 +41,14 @@
 		BA00290514E26CB400BA62A5 /* post.f.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = post.f.glsl; sourceTree = "<group>"; };
 		BA00290614E26CB400BA62A5 /* post.v.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = post.v.glsl; sourceTree = "<group>"; };
 		BA00290814E26CB400BA62A5 /* sprites.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = sprites.tga; sourceTree = "<group>"; };
+		BAA4BBEB14E2CEFB008A6342 /* texture.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = texture.c; sourceTree = "<group>"; };
+		BAA4BBEE14E2CF22008A6342 /* texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = texture.h; sourceTree = "<group>"; };
+		BAA4BBF014E2D888008A6342 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		BAA4BBF514E32E7D008A6342 /* Gemfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Gemfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BAA4BBF614E32E7D008A6342 /* Rakefile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Rakefile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BAA4BBF814E332FB008A6342 /* manifest.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = manifest.yml; sourceTree = "<group>"; };
+		BAA4BBFA14E38581008A6342 /* sprites_texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sprites_texture.h; sourceTree = "<group>"; };
+		BAA4BC0514E41522008A6342 /* test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test.c; sourceTree = "<group>"; };
 		BAEADB0B14E267C00080C5A0 /* Demo (Mac).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Demo (Mac).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEADB0E14E267C10080C5A0 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		BAEADB1114E267C10080C5A0 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -90,6 +102,7 @@
 				BA00290114E26CB400BA62A5 /* Fonts */,
 				BA00290414E26CB400BA62A5 /* Shaders */,
 				BA00290714E26CB400BA62A5 /* Textures */,
+				BAA4BBF814E332FB008A6342 /* manifest.yml */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -118,6 +131,14 @@
 				BA00290814E26CB400BA62A5 /* sprites.tga */,
 			);
 			path = Textures;
+			sourceTree = "<group>";
+		};
+		BAA4BBF914E38581008A6342 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BAA4BBFA14E38581008A6342 /* sprites_texture.h */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		BAEADB0D14E267C00080C5A0 /* Frameworks */ = {
@@ -166,9 +187,14 @@
 		BAF38B5014E2657A00859821 = {
 			isa = PBXGroup;
 			children = (
-				BA00290014E26CB400BA62A5 /* Assets */,
-				BAEADB2E14E269510080C5A0 /* demo.c */,
 				BAF38B6214E265EC00859821 /* Engine */,
+				BA00290014E26CB400BA62A5 /* Assets */,
+				BAA4BBF914E38581008A6342 /* Resources */,
+				BAA4BBF514E32E7D008A6342 /* Gemfile */,
+				BAA4BBF614E32E7D008A6342 /* Rakefile */,
+				BAA4BBF014E2D888008A6342 /* Makefile */,
+				BAEADB2E14E269510080C5A0 /* demo.c */,
+				BAA4BC0514E41522008A6342 /* test.c */,
 				BAEADB1414E267C10080C5A0 /* DemoMac */,
 				BAEADB0D14E267C00080C5A0 /* Frameworks */,
 				BAF38B5C14E2657A00859821 /* Products */,
@@ -194,6 +220,8 @@
 				BAF38B6714E265EC00859821 /* font.h */,
 				BAF38B6814E265EC00859821 /* utility.c */,
 				BAF38B6914E265EC00859821 /* utility.h */,
+				BAA4BBEB14E2CEFB008A6342 /* texture.c */,
+				BAA4BBEE14E2CF22008A6342 /* texture.h */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -209,6 +237,8 @@
 				BAF38B6C14E265EC00859821 /* common.h in Headers */,
 				BAF38B6E14E265EC00859821 /* font.h in Headers */,
 				BAF38B7014E265EC00859821 /* utility.h in Headers */,
+				BAA4BBEF14E2CF22008A6342 /* texture.h in Headers */,
+				BAA4BC0314E38E6F008A6342 /* sprites_texture.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +359,8 @@
 				BAF38B6D14E265EC00859821 /* font.c in Sources */,
 				BAF38B6F14E265EC00859821 /* utility.c in Sources */,
 				BA00290E14E26D5A00BA62A5 /* demo.c in Sources */,
+				BAA4BBEC14E2CEFB008A6342 /* texture.c in Sources */,
+				BAA4BC0614E41522008A6342 /* test.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

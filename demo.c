@@ -11,9 +11,10 @@
 #include <GL/glfw.h>
 
 #include "aposelene.h"
+#include "sprites_texture.h"
 
 #define DRAW_RATE 0.05f
-#define INVERT_TEXTURE_COORDS 1
+#define INVERT_TEXTURE_COORDS 0
 #define ZERO_BITMAP_WIDTH 256
 #define ZERO_BITMAP_HEIGHT 512
 #define ZERO_NUM_FRAMES 10
@@ -78,10 +79,16 @@ void init()
   glGenTextures(1, &texture);
   glBindTexture(GL_TEXTURE_2D, texture);
 
-  if(glfwLoadTexture2D("Assets/Textures/sprites.tga", 0)) { 
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-  } else exit(EXIT_FAILURE);
+  glTexImage2D(GL_TEXTURE_2D,
+               0, GL_RGBA,
+               sprites_texture.width,
+               sprites_texture.height,
+               0, GL_ABGR_EXT,
+               GL_UNSIGNED_BYTE,
+               sprites_texture.pixels);
+  
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
   glEnable(GL_TEXTURE_2D);
 
@@ -108,6 +115,7 @@ void init()
 void drawType()
 {
   ASFont *font = asFontCreate("Assets/Fonts/system");
+  asFontDraw(font, ASVector2DMake(2, 2), "This is some text.");
   asFontDestroy(font);
 }
 
@@ -138,20 +146,10 @@ void drawBackground()
   vertices.v2.x = rX;             vertices.v2.y = rY + fauxHeight;
   vertices.v3.x = rX + fauxWidth; vertices.v3.y = rY + fauxHeight;
 
-  if (INVERT_TEXTURE_COORDS)
-  {
-    coordinates.v0.x = s0; coordinates.v0.y = 1.0f - t1;
-    coordinates.v1.x = s1; coordinates.v1.y = 1.0f - t1;
-    coordinates.v2.x = s0; coordinates.v2.y = 1.0f - t0;
-    coordinates.v3.x = s1; coordinates.v3.y = 1.0f - t0;
-  }
-  else
-  {
-    coordinates.v0.x = s0; coordinates.v0.y = 1.0f - t0;
-    coordinates.v1.x = s1; coordinates.v1.y = 1.0f - t0;
-    coordinates.v2.x = s0; coordinates.v2.y = 1.0f - t1;
-    coordinates.v3.x = s1; coordinates.v3.y = 1.0f - t1;
-  }
+  coordinates.v0.x = s0; coordinates.v0.y = t1;
+  coordinates.v1.x = s1; coordinates.v1.y = t1;
+  coordinates.v2.x = s0; coordinates.v2.y = t0;
+  coordinates.v3.x = s1; coordinates.v3.y = t0;
 
   glEnableClientState(GL_VERTEX_ARRAY);
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -194,20 +192,10 @@ void drawZero()
   vertices.v2.x = rX;          vertices.v2.y = rY + size.y;
   vertices.v3.x = rX + size.x; vertices.v3.y = rY + size.y;
 
-  if (INVERT_TEXTURE_COORDS)
-  {
-    coordinates.v0.x = s0; coordinates.v0.y = 1.0f - t1;
-    coordinates.v1.x = s1; coordinates.v1.y = 1.0f - t1;
-    coordinates.v2.x = s0; coordinates.v2.y = 1.0f - t0;
-    coordinates.v3.x = s1; coordinates.v3.y = 1.0f - t0;
-  }
-  else
-  {
-    coordinates.v0.x = s0; coordinates.v0.y = 1.0f - t0;
-    coordinates.v1.x = s1; coordinates.v1.y = 1.0f - t0;
-    coordinates.v2.x = s0; coordinates.v2.y = 1.0f - t1;
-    coordinates.v3.x = s1; coordinates.v3.y = 1.0f - t1;
-  }
+  coordinates.v0.x = s0; coordinates.v0.y = t1;
+  coordinates.v1.x = s1; coordinates.v1.y = t1;
+  coordinates.v2.x = s0; coordinates.v2.y = t0;
+  coordinates.v3.x = s1; coordinates.v3.y = t0;
 
   glEnableClientState(GL_VERTEX_ARRAY);
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);

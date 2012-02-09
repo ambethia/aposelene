@@ -6,13 +6,19 @@
 //
 
 #include <stdlib.h>
+#include <string.h>
 #include "font.h"
 
-ASFont * asFontCreate(char *fontname)
+ASFont * asFontCreate(char *fontName)
 {
   ASFont *font; 
   font = (ASFont *)malloc(sizeof(ASFont));
 
+  char textureName[strlen(fontName) + 4];
+  strcpy(textureName, fontName);
+  strcat(textureName, ".tga");
+  font->texture = asTextureCreate(textureName);
+  
   font->colorFilter = ASColorMake(1.0f, 1.0f, 1.0f, 1.0f);
 
   return font;
@@ -21,7 +27,7 @@ ASFont * asFontCreate(char *fontname)
 void asFontDestroy(ASFont *self)
 {
   if(self) {
-    // TODO: free characters, etc.
+    asTextureDestroy(self->texture); 
     free(self);
   } 
 }

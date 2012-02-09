@@ -1,7 +1,7 @@
 CC=gcc
-CFLAGS=-Wall -g -IEngine
+CFLAGS=-Wall -g -IEngine -IResources
 LDFLAGS=-framework Cocoa -framework OpenGL -lglfw
-ENGINE= Engine/common.c Engine/font.c Engine/utility.c
+ENGINE= Engine/*.c
 
 all: demo
 

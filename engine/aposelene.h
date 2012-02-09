@@ -10,6 +10,7 @@
 
 #include "common.h"
 #include "font.h"
+#include "texture.h"
 #include "utility.h"
 
 #endif

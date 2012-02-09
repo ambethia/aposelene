@@ -16,11 +16,15 @@ struct ASVector2D {
 };
 typedef struct ASVector2D ASVector2D;
 
+inline ASVector2D ASVector2DMake(GLint x, GLint y);
+
 struct ASVector2Df {
   GLfloat x;
   GLfloat y;
 };
 typedef struct ASVector2Df ASVector2Df;
+
+inline ASVector2Df ASVector2DfMake(GLfloat x, GLfloat y);
 
 struct ASRect {
   ASVector2D origin;

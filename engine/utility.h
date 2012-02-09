@@ -8,7 +8,7 @@
 #ifndef _aposelene_utility_h
 #define _aposelene_utility_h
 
-#include <OpenGL/gl.h>
+#include "common.h"
 
 GLuint asCreateShaderProgram(int n, ...);
 
