@@ -8,7 +8,8 @@
 #ifndef _aposelene_font_h
 #define _aposelene_font_h
 
-#include "aposelene.h"
+#include "common.h"
+#include "texture.h"
 
 struct ASFontCharacter {
   int characterID;
@@ -19,7 +20,7 @@ struct ASFontCharacter {
 typedef struct ASFontCharacter ASFontCharacter;
 
 struct ASFont {
-  GLint textureID;
+  ASTexture *texture;
   ASFontCharacter *characters;
   ASColor colorFilter;
 };

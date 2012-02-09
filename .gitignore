@@ -1,4 +1,6 @@
 demo
+test
 *.dSYM
 *.o
 *.xcuserstate
+Aposelene.xcodeproj/project.xcworkspace/xcuserdata/
