@@ -56,7 +56,7 @@ def dump_texture_resource(path_to_file)
   width = png.width
   data = "".tap do |data|
     png.pixels.each_slice(4) do |row|
-      data << row.map { |x| "0x%02x" % x }.join(", ") + ",\n  "
+      data << row.map { |x| "0x%02x" % x }.join(", ") + ",\n    "
     end
   end
   source = <<-EOF
@@ -71,15 +71,14 @@ def dump_texture_resource(path_to_file)
 #ifndef _#{name}_h
 #define _#{name}_h
 
-static const struct {
-  int height;
-  int width;
-  unsigned int pixels[#{height * width}];
-} #{name} = {
-  #{height}, #{width}, {
-  #{data}}
-};
+#include "aposelene.h"
 
+static const ASTextureResource _#{name} = {
+  #{width}, #{height},
+  (unsigned int[#{height * width}]) {
+    #{data}}
+};
+ASTextureResource *#{name} = (ASTextureResource *)&_#{name};
 #endif
 
   EOF
@@ -106,7 +105,7 @@ task :bundle do
     <key>CFBundleExecutable</key>
     <string>Demo</string>
     <key>CFBundleIconFile</key>
-    <string>Icon.png</string>
+    <string>Resources/Icon.png</string>
     <key>CFBundleIdentifier</key>
     <string>com.ambethia.aposelene.demo</string>
     <key>CFBundleInfoDictionaryVersion</key>

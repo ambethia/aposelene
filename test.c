@@ -3,23 +3,20 @@
 
 #include "aposelene.h"
 
-static const struct {
-  int height;
-  int width;
-  unsigned int pixels[16];
-} sprites_texture = {
+static const ASTextureResource _sprites_texture = {
   4, 4,
-  {
+  (unsigned int[16]){
     0xff0000ff, 0x00ff00ff, 0x00ff00ff, 0x0000ffff,
     0xff0000ff, 0xffffff00, 0xffffffff, 0x0000ffff,
     0xff0000ff, 0xffffffff, 0xffffff00, 0x0000ffff,
     0xff0000ff, 0xffffff00, 0xffffffff, 0x0000ffff,
   }
 };
+ASTextureResource *sprites_texture = (ASTextureResource *)&_sprites_texture;
 
 #define SIZE 128
 
-GLuint texture;
+ASTexture *texture;
 
 void init()
 {
@@ -28,25 +25,13 @@ void init()
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
   glOrtho(0, SIZE, 0, SIZE, -1, 1);
-  
-  glGenTextures(1, &texture);
-  glBindTexture(GL_TEXTURE_2D, texture);
-  
-  glTexImage2D(GL_TEXTURE_2D,
-               0, GL_RGBA,
-               sprites_texture.width,
-               sprites_texture.height,
-               0, GL_ABGR_EXT,
-               GL_UNSIGNED_BYTE,
-               sprites_texture.pixels);
-  
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-  
+
   glEnable(GL_TEXTURE_2D);
   
   glEnable(GL_BLEND);
-  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); 
+
+  texture = asTextureCreate(sprites_texture);
 }
 
 void draw()

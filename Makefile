@@ -7,5 +7,7 @@ all: demo
 
 demo: $(ENGINE)
 
+test: $(ENGINE)
+
 clean:
 	rm -rf engine/*.o *.o demo *.dSYM

@@ -32,11 +32,15 @@ struct ASRect {
 };
 typedef struct ASRect ASRect;
 
+inline ASRect ASRectMake(GLint xOrigin, GLint yOrigin, GLint xSize, GLint ySize);
+
 struct ASRectf {
   ASVector2Df origin;
   ASVector2Df size;
 };
 typedef struct ASRectf ASRectf;
+
+inline ASRectf ASRectfMake(GLfloat xOrigin, GLfloat yOrigin, GLfloat xSize, GLfloat ySize);
 
 struct ASQuad {
   ASVector2D v0;

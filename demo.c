@@ -38,14 +38,10 @@ int clipY = 0;
 int clipWidth = 640;
 int clipHeight = 576;
 
-GLuint texture;
+ASTexture *texture;
+ASVector2Df position;
 
 int renderToFBO = 1;
-
-struct {
-  GLfloat x;
-  GLfloat y;
-} position;
 
 struct {
   GLuint x;
@@ -80,25 +76,13 @@ void init()
   glLoadIdentity();
   glOrtho(0, fauxWidth, 0, fauxHeight, -1, 1);
 
-  glGenTextures(1, &texture);
-  glBindTexture(GL_TEXTURE_2D, texture);
-
-  glTexImage2D(GL_TEXTURE_2D,
-               0, GL_RGBA,
-               sprites_texture.width,
-               sprites_texture.height,
-               0, GL_ABGR_EXT,
-               GL_UNSIGNED_BYTE,
-               sprites_texture.pixels);
-  
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-
   glEnable(GL_TEXTURE_2D);
 
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+  texture = asTextureCreate(sprites_texture);
+  
   // // Enable depth test
   // glEnable(GL_DEPTH_TEST);
   // // Accept fragment if it closer to the camera than the former one
@@ -113,104 +97,6 @@ void init()
 
   frameIndex = 0.0f;
 
-  glBindTexture(GL_TEXTURE_2D, 0);
-}
-
-void drawType()
-{
-  ASFont *font = asFontCreate("Assets/Fonts/system");
-  asFontDraw(font, ASVector2DMake(2, 2), "This is some text.");
-  asFontDestroy(font);
-}
-
-// Sprite drawing stuff that will get refactored to
-// sprite objects that draw themselves.
-void drawBackground()
-{
-  GLfloat xRatio = 1.0f / ZERO_BITMAP_WIDTH;
-  GLfloat yRatio = 1.0f / ZERO_BITMAP_HEIGHT;
-  
-  ASQuadf vertices;
-  ASQuadf coordinates;
-
-  int xOffset = zero_texcoords[40];
-  int yOffset = zero_texcoords[41];
-
-  GLfloat s0 = xRatio * xOffset;
-  GLfloat t0 = yRatio * yOffset;
-  GLfloat s1 = xRatio * fauxWidth + s0;
-  GLfloat t1 = yRatio * fauxHeight + t0;
-
-  // Round off so the animation aren't "subpixel" in relation to the "super pixels".
-  GLint rX = 0;
-  GLint rY = 0;
-
-  vertices.v0.x = rX;             vertices.v0.y = rY;
-  vertices.v1.x = rX + fauxWidth; vertices.v1.y = rY;
-  vertices.v2.x = rX;             vertices.v2.y = rY + fauxHeight;
-  vertices.v3.x = rX + fauxWidth; vertices.v3.y = rY + fauxHeight;
-
-  coordinates.v0.x = s0; coordinates.v0.y = t1;
-  coordinates.v1.x = s1; coordinates.v1.y = t1;
-  coordinates.v2.x = s0; coordinates.v2.y = t0;
-  coordinates.v3.x = s1; coordinates.v3.y = t0;
-
-  glEnableClientState(GL_VERTEX_ARRAY);
-  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-
-  glVertexPointer(2, GL_FLOAT, 0, &vertices);
-  glTexCoordPointer(2, GL_FLOAT, 0, &coordinates);
-
-  glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-
-  glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-  glDisableClientState(GL_VERTEX_ARRAY);
-}
-
-// running animation
-void drawZero()
-{
-  GLfloat xRatio = 1.0f / ZERO_BITMAP_WIDTH;
-  GLfloat yRatio = 1.0f / ZERO_BITMAP_HEIGHT;
-    
-  ASQuadf vertices;
-  ASQuadf coordinates;
-
-  int sIndex = round(frameIndex) * 4;
-  int tIndex = round(frameIndex) * 4 + 1;
-
-  int xOffset = zero_texcoords[sIndex];
-  int yOffset = zero_texcoords[tIndex];
-
-  GLfloat s0 = xRatio * xOffset;
-  GLfloat t0 = yRatio * yOffset;
-  GLfloat s1 = xRatio * size.x + s0;
-  GLfloat t1 = yRatio * size.y + t0;
-
-  // Round off so the animation aren't "subpixel" in relation to the "super pixels".
-  GLint rX = round(position.x);
-  GLint rY = round(position.y);
-
-  vertices.v0.x = rX;          vertices.v0.y = rY;
-  vertices.v1.x = rX + size.x; vertices.v1.y = rY;
-  vertices.v2.x = rX;          vertices.v2.y = rY + size.y;
-  vertices.v3.x = rX + size.x; vertices.v3.y = rY + size.y;
-
-  coordinates.v0.x = s0; coordinates.v0.y = t1;
-  coordinates.v1.x = s1; coordinates.v1.y = t1;
-  coordinates.v2.x = s0; coordinates.v2.y = t0;
-  coordinates.v3.x = s1; coordinates.v3.y = t0;
-
-  glEnableClientState(GL_VERTEX_ARRAY);
-  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-
-  glVertexPointer(2, GL_FLOAT, 0, &vertices);
-  glTexCoordPointer(2, GL_FLOAT, 0, &coordinates);
-
-  glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-
-  glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-  glDisableClientState(GL_VERTEX_ARRAY);
 }
 
 void draw(double deltaTime)
@@ -221,26 +107,24 @@ void draw(double deltaTime)
   if(position.x > fauxWidth)
   {
     position.x = 1.0f - size.x;
-    // if(renderToFBO) {
-    //   renderToFBO = 0;
-    // } else {
-    //   renderToFBO = 1;
-    // }
   }
-  // position.y += ZERO_VELOCITY * deltaTime;
 
   if(frameIndex >= ZERO_NUM_FRAMES - 1)
   {
     frameIndex = 0.0f;
   }
 
-  glBindTexture(GL_TEXTURE_2D, texture);
+  int frame = round(frameIndex);
+  int sIndex = zero_texcoords[frame * 4];
+  int tIndex = zero_texcoords[frame * 4 + 1];
+  int xOffset = zero_texcoords[frame * 4 + 2];
+  int yOffset = zero_texcoords[frame * 4 + 3];
+  
+  ASRect background = ASRectMake(zero_texcoords[40], zero_texcoords[41], zero_texcoords[42], zero_texcoords[43]);
+  ASRect zero = ASRectMake(sIndex, tIndex, xOffset, yOffset);
 
-  drawBackground();
-  drawZero();
-  drawType();
-
-  glBindTexture(GL_TEXTURE_2D, 0);
+  asTextureDraw(texture, background, ASVector2DMake(0, 0));
+  asTextureDraw(texture, zero, ASVector2DMake(round(position.x), round(position.y)));
 
   frameIndex += 1.0f * (deltaTime * ZERO_FRAME_STEP);
 }

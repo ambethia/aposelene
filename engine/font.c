@@ -17,7 +17,7 @@ ASFont * asFontCreate(char *fontName)
   char textureName[strlen(fontName) + 4];
   strcpy(textureName, fontName);
   strcat(textureName, ".tga");
-  font->texture = asTextureCreate(textureName);
+//  font->texture = asTextureCreate(textureName);
   
   font->colorFilter = ASColorMake(1.0f, 1.0f, 1.0f, 1.0f);
 

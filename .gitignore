@@ -5,3 +5,4 @@ test
 *.xcuserstate
 Aposelene.xcodeproj/project.xcworkspace/xcuserdata/
 Build/*
+*.xcbkptlist

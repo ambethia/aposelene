@@ -11,12 +11,20 @@
 #include "common.h"
 
 struct ASTexture {
-  GLint textureID;
+  GLuint name;
   ASVector2D size;
 };
 typedef struct ASTexture ASTexture;
 
-ASTexture * asTextureCreate(char *textureName);
+struct ASTextureResource {
+  int width;
+  int height;
+  unsigned int *pixels;
+};
+typedef struct ASTextureResource ASTextureResource;
+
+
+ASTexture * asTextureCreate(ASTextureResource *resource);
 
 void asTextureDestroy(ASTexture *self);
 

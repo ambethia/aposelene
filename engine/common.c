@@ -23,6 +23,22 @@ inline ASVector2Df ASVector2DfMake(GLfloat x, GLfloat y)
   return vector2Df;  
 }
 
+inline ASRect ASRectMake(GLint xOrigin, GLint yOrigin, GLint xSize, GLint ySize)
+{
+  ASRect rect;
+  rect.origin = ASVector2DMake(xOrigin, yOrigin);
+  rect.size = ASVector2DMake(xSize, ySize);
+  return rect;
+}
+
+inline ASRectf ASRectfMake(GLfloat xOrigin, GLfloat yOrigin, GLfloat xSize, GLfloat ySize)
+{
+  ASRectf rectf;
+  rectf.origin = ASVector2DfMake(xOrigin, yOrigin);
+  rectf.size = ASVector2DfMake(xSize, ySize);
+  return rectf;  
+}
+
 inline ASColor ASColorMake(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
 {
   ASColor color;
