@@ -17,55 +17,43 @@
 static GLuint asCreateShader(GLenum eShaderType, const GLchar *source)
 {
   GLint length = (GLint)strlen(source);
-  GLuint shader;
+  GLuint shader = glCreateShader(eShaderType);
   GLint status;
-  
+
   if (!source)
     return 0;
-  
-  shader = glCreateShader(eShaderType);
-  
+
   glShaderSource(shader, 1, &source, &length);
   glCompileShader(shader);
-  
   glGetShaderiv(shader, GL_COMPILE_STATUS, &status);
   if (status == GL_FALSE) {
     GLint infoLogLength;
     glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLogLength);
-    
     GLchar *strInfoLog = malloc(infoLogLength);
     glGetShaderInfoLog(shader, infoLogLength, NULL, strInfoLog);
-    
     const char *strShaderType = NULL;
     switch(eShaderType) {
       case GL_VERTEX_SHADER: strShaderType = "vertex"; break;
-#ifdef GL_GEOMETRY_SHADER
-      case GL_GEOMETRY_SHADER: strShaderType = "geometry"; break;
-#endif
       case GL_FRAGMENT_SHADER: strShaderType = "fragment"; break;
     }
     fprintf(stderr, "Compile failure in %s shader:\n%s\n", strShaderType, strInfoLog);
     free(strInfoLog);
   }
-  
   return shader;
 }
 
-// asCreateShaderProgram(2, GL_VERTEX_SHADER, "vertex.glsl");
-// asCreateShaderProgram(4, GL_VERTEX_SHADER, "vertex.glsl", GL_FRAGMENT_SHADER, "fragment.glsl");
+// asCreateShaderProgram(2, GL_VERTEX_SHADER, "...");
+// asCreateShaderProgram(4, GL_VERTEX_SHADER, "...", GL_FRAGMENT_SHADER, "...");
 GLuint asCreateShaderProgram(int numArgs, ...)
 {
   int numShaders = numArgs / 2;
   int i;
   GLint status;
-  GLuint program;
+  GLuint program = glCreateProgram();
   GLuint shaders[numShaders];
   va_list argp;
 
   va_start(argp, numArgs);
-
-  program = glCreateProgram();
-  
   for (i = 0; i < numShaders; i++) {
     GLenum type = va_arg(argp, GLenum);
     const char* shaderSource = va_arg(argp, const char*);
@@ -75,7 +63,6 @@ GLuint asCreateShaderProgram(int numArgs, ...)
   va_end(argp);
   
   glLinkProgram(program);
-  
   glGetProgramiv(program, GL_LINK_STATUS, &status);
   if (status == GL_FALSE) {
     GLint infoLogLength;
@@ -84,14 +71,12 @@ GLuint asCreateShaderProgram(int numArgs, ...)
     glGetProgramInfoLog(program, infoLogLength, NULL, strInfoLog);
     fprintf(stderr, "Link failure in program:\n%s\n", strInfoLog);
     free(strInfoLog);
-    
     return GL_FALSE;
   } else {
     for (i = 0; i < numShaders; i++) {
       glDeleteShader((GLuint)shaders[i]);
     }
   }
-  
   return program;
 }
 

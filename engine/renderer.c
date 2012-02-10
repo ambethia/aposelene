@@ -35,11 +35,9 @@ void asRendererCallback(void (*renderCallback)(double))
 }
 
 void asRendererReshape(int width, int height) {
-
   // Adjust scaleFactor to fit inside the screen
   int scaleFactor = 1;
-  while(renderer.size.x * (scaleFactor + 1) <= width &&
-        renderer.size.y * (scaleFactor + 1) <= height)
+  while(renderer.size.x * (scaleFactor + 1) <= width && renderer.size.y * (scaleFactor + 1) <= height)
     ++scaleFactor;
   
   renderer.clip.x = renderer.size.x * scaleFactor;
@@ -71,22 +69,15 @@ void asRender(double deltaTime)
   glUniform1i(renderer.fboTextureUniform, 0);
   
   // mash them into one vector uniform;
-  glUniform4f(renderer.screenSizeUniform,
-              (float)renderer.size.x, (float)renderer.size.y,
-              (float)renderer.clip.x, (float)renderer.clip.y);
-  
+  glUniform4f(renderer.screenSizeUniform, (float)renderer.size.x, (float)renderer.size.y, (float)renderer.clip.x, (float)renderer.clip.y);
+
   glEnableVertexAttribArray(renderer.postVertexAttribute); 
   glBindBuffer(GL_ARRAY_BUFFER, renderer.fboVertices);
-  
-  glVertexAttribPointer(renderer.postVertexAttribute,  // attribute
-                        2,                           // number of elements per vertex, here (x,y)
-                        GL_FLOAT,                    // the type of each element
-                        GL_FALSE,                    // take our values as-is
-                        0,                           // no extra data between each position
-                        0);                          // offset of first element
-  
+
+  glVertexAttribPointer(renderer.postVertexAttribute, 2, GL_FLOAT, GL_FALSE, 0, 0);
+
   glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-  
+
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glDisableVertexAttribArray(renderer.postVertexAttribute);
   glBindTexture(GL_TEXTURE_2D, 0);
@@ -110,7 +101,7 @@ void asInitialize(int width, int height)
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
   /* Create back-buffer, used for post-processing */
-  
+
   /* Texture */
   glGenTextures(1, &renderer.fboTexture);
   glBindTexture(GL_TEXTURE_2D, renderer.fboTexture);
@@ -120,21 +111,20 @@ void asInitialize(int width, int height)
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, renderer.size.x, renderer.size.y, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
   glBindTexture(GL_TEXTURE_2D, 0);
-  
+
   /* Depth buffer */
   glGenRenderbuffers(1, &renderer.depthBuffer);
   glBindRenderbuffer(GL_RENDERBUFFER, renderer.depthBuffer);
   glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, renderer.size.x, renderer.size.y);
   glBindRenderbuffer(GL_RENDERBUFFER, 0);
-  
+
   /* Framebuffer to link everything together */
   glGenFramebuffers(1, &renderer.fbo);
   glBindFramebuffer(GL_FRAMEBUFFER, renderer.fbo);
   glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, renderer.fboTexture, 0);
   glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, renderer.depthBuffer);
-  if ((glCheckFramebufferStatus(GL_FRAMEBUFFER)) != GL_FRAMEBUFFER_COMPLETE) {
+  if ((glCheckFramebufferStatus(GL_FRAMEBUFFER)) != GL_FRAMEBUFFER_COMPLETE)
     fprintf(stderr, "Failed to create framebuffer.");
-  }
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
   glGenBuffers(1, &renderer.fboVertices);
@@ -144,15 +134,12 @@ void asInitialize(int width, int height)
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   
   /* Post-processing */
-  renderer.postShaderProgram = asCreateShaderProgram(4,
-                                           GL_VERTEX_SHADER, post_vertex_shader,
-                                           GL_FRAGMENT_SHADER, post_fragment_shader);
+  renderer.postShaderProgram = asCreateShaderProgram(4, GL_VERTEX_SHADER, post_vertex_shader, GL_FRAGMENT_SHADER, post_fragment_shader);
 
   char *attribute = "position";
   renderer.postVertexAttribute = glGetAttribLocation(renderer.postShaderProgram, attribute);
-  if (renderer.postVertexAttribute == -1) {
+  if (renderer.postVertexAttribute == -1)
     fprintf(stderr, "Could not bind attribute %s\n", attribute);
-  }
 
   renderer.screenSizeUniform = glGetUniformLocation(renderer.postShaderProgram, "screenSize");
   renderer.fboTextureUniform = glGetUniformLocation(renderer.postShaderProgram, "fboTexture");
