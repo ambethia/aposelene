@@ -16,6 +16,8 @@
 		BA00290E14E26D5A00BA62A5 /* demo.c in Sources */ = {isa = PBXBuildFile; fileRef = BAEADB2E14E269510080C5A0 /* demo.c */; };
 		BA9A1A4614E4B7B400AB44C4 /* post_vertex_shader.h in Headers */ = {isa = PBXBuildFile; fileRef = BA9A1A4514E4B3CF00AB44C4 /* post_vertex_shader.h */; };
 		BA9A1A4714E4B7B900AB44C4 /* post_fragment_shader.h in Headers */ = {isa = PBXBuildFile; fileRef = BA9A1A4414E4B3CF00AB44C4 /* post_fragment_shader.h */; };
+		BA9A1A4914E4F58100AB44C4 /* renderer.h in Headers */ = {isa = PBXBuildFile; fileRef = BA9A1A4814E4F58100AB44C4 /* renderer.h */; };
+		BA9A1A4B14E4F5BE00AB44C4 /* renderer.c in Sources */ = {isa = PBXBuildFile; fileRef = BA9A1A4A14E4F5BE00AB44C4 /* renderer.c */; };
 		BAA4BBEC14E2CEFB008A6342 /* texture.c in Sources */ = {isa = PBXBuildFile; fileRef = BAA4BBEB14E2CEFB008A6342 /* texture.c */; };
 		BAA4BBEF14E2CF22008A6342 /* texture.h in Headers */ = {isa = PBXBuildFile; fileRef = BAA4BBEE14E2CF22008A6342 /* texture.h */; };
 		BAA4BC0314E38E6F008A6342 /* sprites_texture.h in Headers */ = {isa = PBXBuildFile; fileRef = BAA4BBFA14E38581008A6342 /* sprites_texture.h */; };
@@ -45,6 +47,8 @@
 		BA00290814E26CB400BA62A5 /* sprites.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = sprites.tga; sourceTree = "<group>"; };
 		BA9A1A4414E4B3CF00AB44C4 /* post_fragment_shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = post_fragment_shader.h; sourceTree = "<group>"; };
 		BA9A1A4514E4B3CF00AB44C4 /* post_vertex_shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = post_vertex_shader.h; sourceTree = "<group>"; };
+		BA9A1A4814E4F58100AB44C4 /* renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = renderer.h; sourceTree = "<group>"; };
+		BA9A1A4A14E4F5BE00AB44C4 /* renderer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = renderer.c; sourceTree = "<group>"; };
 		BAA4BBEB14E2CEFB008A6342 /* texture.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = texture.c; sourceTree = "<group>"; };
 		BAA4BBEE14E2CF22008A6342 /* texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = texture.h; sourceTree = "<group>"; };
 		BAA4BBF014E2D888008A6342 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
@@ -228,6 +232,8 @@
 				BAF38B6914E265EC00859821 /* utility.h */,
 				BAA4BBEB14E2CEFB008A6342 /* texture.c */,
 				BAA4BBEE14E2CF22008A6342 /* texture.h */,
+				BA9A1A4814E4F58100AB44C4 /* renderer.h */,
+				BA9A1A4A14E4F5BE00AB44C4 /* renderer.c */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -247,6 +253,7 @@
 				BAA4BC0314E38E6F008A6342 /* sprites_texture.h in Headers */,
 				BA9A1A4614E4B7B400AB44C4 /* post_vertex_shader.h in Headers */,
 				BA9A1A4714E4B7B900AB44C4 /* post_fragment_shader.h in Headers */,
+				BA9A1A4914E4F58100AB44C4 /* renderer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,6 +376,7 @@
 				BA00290E14E26D5A00BA62A5 /* demo.c in Sources */,
 				BAA4BBEC14E2CEFB008A6342 /* texture.c in Sources */,
 				BAA4BC0614E41522008A6342 /* test.c in Sources */,
+				BA9A1A4B14E4F5BE00AB44C4 /* renderer.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
