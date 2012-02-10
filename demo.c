@@ -47,7 +47,7 @@ const unsigned int zero_texcoords[] = {
   0, 233, 160, 144
 };
 
-void init()
+static void init()
 {
   texture = asTextureCreate(sprites_texture);
   position.x = 0.0f;
@@ -55,7 +55,7 @@ void init()
   frameIndex = 0.0f;
 }
 
-void draw(double deltaTime)
+static void draw(double deltaTime)
 {
 
   position.x += ZERO_VELOCITY * deltaTime;
@@ -95,7 +95,7 @@ int main (int argc, char const *argv[])
   }
   glfwSetWindowTitle("");
 
-  asInit(fauxWidth, fauxHeight);
+  asInitialize(fauxWidth, fauxHeight);
 
   glfwSetWindowSizeCallback(asRendererReshape);
 

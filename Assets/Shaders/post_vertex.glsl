@@ -5,10 +5,10 @@
 //  Copyright 2012 Jason L Perry. All rights reserved.
 //
 
-attribute vec2 v_coord;
-varying vec2 f_texcoord;
+attribute vec2 position;
+varying vec2 fragmentTexCoord;
  
 void main(void) {
-  gl_Position = vec4(v_coord, 0.0, 1.0);
-  f_texcoord = (v_coord + 1.0) / 2.0;
+  gl_Position = vec4(position, 0.0, 1.0);
+  fragmentTexCoord = (position + 1.0) / 2.0;
 }

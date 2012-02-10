@@ -14,18 +14,18 @@
 #include "post_vertex_shader.h"
 #include "post_fragment_shader.h"
 
-struct {
+static struct {
   ASVector2D size;
   ASVector2D clip;
   ASVector2D position;
   GLuint fbo;
-  GLuint fbo_texture;
-  GLuint rbo_depth;
-  GLuint vbo_fbo_vertices;
-  GLuint program_postproc;
-  GLuint attribute_v_coord_postproc;
-  GLuint uniform_fbo_texture;
-  GLuint uniform_screen_sizes;
+  GLuint fboTexture;
+  GLuint fboVertices;
+  GLuint depthBuffer;
+  GLuint postShaderProgram;
+  GLuint postVertexAttribute;
+  GLuint fboTextureUniform;
+  GLuint screenSizeUniform;
   void (*renderCallback)(double);
 } renderer;
 
@@ -55,7 +55,7 @@ void asRender(double deltaTime)
 {
   glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
-  // Render off screen framebuffer
+  // Render to off screen framebuffer
   glBindFramebuffer(GL_FRAMEBUFFER, renderer.fbo);
   glViewport(0, 0, renderer.size.x, renderer.size.y);
   renderer.renderCallback(deltaTime);
@@ -63,21 +63,22 @@ void asRender(double deltaTime)
   // Render that framebuffer now with post effects
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
   glViewport(renderer.position.x, renderer.position.y, renderer.clip.x, renderer.clip.y);
-  glClearColor(0.0, 0.0, 0.0, 1.0);
+  glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
   glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
   
-  glUseProgram(renderer.program_postproc);
-  glBindTexture(GL_TEXTURE_2D, renderer.fbo_texture);
-  glUniform1i(renderer.uniform_fbo_texture, 0);
+  glUseProgram(renderer.postShaderProgram);
+  glBindTexture(GL_TEXTURE_2D, renderer.fboTexture);
+  glUniform1i(renderer.fboTextureUniform, 0);
   
   // mash them into one vector uniform;
-  glUniform4f(renderer.uniform_screen_sizes, (float)renderer.size.x, (float)renderer.size.y,
+  glUniform4f(renderer.screenSizeUniform,
+              (float)renderer.size.x, (float)renderer.size.y,
               (float)renderer.clip.x, (float)renderer.clip.y);
   
-  glEnableVertexAttribArray(renderer.attribute_v_coord_postproc); 
-  glBindBuffer(GL_ARRAY_BUFFER, renderer.vbo_fbo_vertices);
+  glEnableVertexAttribArray(renderer.postVertexAttribute); 
+  glBindBuffer(GL_ARRAY_BUFFER, renderer.fboVertices);
   
-  glVertexAttribPointer(renderer.attribute_v_coord_postproc,  // attribute
+  glVertexAttribPointer(renderer.postVertexAttribute,  // attribute
                         2,                           // number of elements per vertex, here (x,y)
                         GL_FLOAT,                    // the type of each element
                         GL_FALSE,                    // take our values as-is
@@ -87,12 +88,12 @@ void asRender(double deltaTime)
   glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
   
   glBindBuffer(GL_ARRAY_BUFFER, 0);
-  glDisableVertexAttribArray(renderer.attribute_v_coord_postproc);
+  glDisableVertexAttribArray(renderer.postVertexAttribute);
   glBindTexture(GL_TEXTURE_2D, 0);
   glUseProgram(0);
 }
 
-void asInit(int width, int height)
+void asInitialize(int width, int height)
 {
   renderer.size.x = width;
   renderer.size.y = height;
@@ -111,8 +112,8 @@ void asInit(int width, int height)
   /* Create back-buffer, used for post-processing */
   
   /* Texture */
-  glGenTextures(1, &renderer.fbo_texture);
-  glBindTexture(GL_TEXTURE_2D, renderer.fbo_texture);
+  glGenTextures(1, &renderer.fboTexture);
+  glBindTexture(GL_TEXTURE_2D, renderer.fboTexture);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
@@ -121,52 +122,47 @@ void asInit(int width, int height)
   glBindTexture(GL_TEXTURE_2D, 0);
   
   /* Depth buffer */
-  glGenRenderbuffers(1, &renderer.rbo_depth);
-  glBindRenderbuffer(GL_RENDERBUFFER, renderer.rbo_depth);
+  glGenRenderbuffers(1, &renderer.depthBuffer);
+  glBindRenderbuffer(GL_RENDERBUFFER, renderer.depthBuffer);
   glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, renderer.size.x, renderer.size.y);
   glBindRenderbuffer(GL_RENDERBUFFER, 0);
   
   /* Framebuffer to link everything together */
   glGenFramebuffers(1, &renderer.fbo);
   glBindFramebuffer(GL_FRAMEBUFFER, renderer.fbo);
-  glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, renderer.fbo_texture, 0);
-  glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, renderer.rbo_depth);
+  glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, renderer.fboTexture, 0);
+  glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, renderer.depthBuffer);
   if ((glCheckFramebufferStatus(GL_FRAMEBUFFER)) != GL_FRAMEBUFFER_COMPLETE) {
     fprintf(stderr, "Failed to create framebuffer.");
   }
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
-  
-  GLfloat fbo_vertices[] = {
-    -1, -1,
-    1, -1,
-    -1,  1,
-    1,  1,
-  };
-  glGenBuffers(1, &renderer.vbo_fbo_vertices);
-  glBindBuffer(GL_ARRAY_BUFFER, renderer.vbo_fbo_vertices);
-  glBufferData(GL_ARRAY_BUFFER, sizeof(fbo_vertices), fbo_vertices, GL_STATIC_DRAW);
+
+  glGenBuffers(1, &renderer.fboVertices);
+  glBindBuffer(GL_ARRAY_BUFFER, renderer.fboVertices);
+  GLfloat vertices[] = {-1, -1, 1, -1, -1, 1, 1, 1};
+  glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   
   /* Post-processing */
-  renderer.program_postproc = asCreateShaderProgram(4,
+  renderer.postShaderProgram = asCreateShaderProgram(4,
                                            GL_VERTEX_SHADER, post_vertex_shader,
                                            GL_FRAGMENT_SHADER, post_fragment_shader);
-  
-  char *attribute_name = "v_coord";
-  renderer.attribute_v_coord_postproc = glGetAttribLocation(renderer.program_postproc, attribute_name);
-  if (renderer.attribute_v_coord_postproc == -1) {
-    fprintf(stderr, "Could not bind attribute %s\n", attribute_name);
+
+  char *attribute = "position";
+  renderer.postVertexAttribute = glGetAttribLocation(renderer.postShaderProgram, attribute);
+  if (renderer.postVertexAttribute == -1) {
+    fprintf(stderr, "Could not bind attribute %s\n", attribute);
   }
-  
-  renderer.uniform_screen_sizes = glGetUniformLocation(renderer.program_postproc, "screen_sizes");
-  renderer.uniform_fbo_texture = glGetUniformLocation(renderer.program_postproc, "fbo_texture");
+
+  renderer.screenSizeUniform = glGetUniformLocation(renderer.postShaderProgram, "screenSize");
+  renderer.fboTextureUniform = glGetUniformLocation(renderer.postShaderProgram, "fboTexture");
 }
 
-void asTerminate()
+void asTerminate(void)
 {
-  glDeleteRenderbuffers(1, &renderer.rbo_depth);
-  glDeleteTextures(1, &renderer.fbo_texture);
+  glDeleteRenderbuffers(1, &renderer.depthBuffer);
+  glDeleteTextures(1, &renderer.fboTexture);
   glDeleteFramebuffers(1, &renderer.fbo);
-  glDeleteBuffers(1, &renderer.vbo_fbo_vertices);
-  glDeleteProgram(renderer.program_postproc);
+  glDeleteBuffers(1, &renderer.fboVertices);
+  glDeleteProgram(renderer.postShaderProgram);
 }

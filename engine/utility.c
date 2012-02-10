@@ -16,7 +16,7 @@
 
 static GLuint asCreateShader(GLenum eShaderType, const GLchar *source)
 {
-  GLint length = strlen(source);
+  GLint length = (GLint)strlen(source);
   GLuint shader;
   GLint status;
   

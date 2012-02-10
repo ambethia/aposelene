@@ -8,11 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		BA0028FC14E26B3300BA62A5 /* libAposelene.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF38B5B14E2657A00859821 /* libAposelene.a */; };
-		BA00290914E26CB400BA62A5 /* system.fnt in Resources */ = {isa = PBXBuildFile; fileRef = BA00290214E26CB400BA62A5 /* system.fnt */; };
-		BA00290A14E26CB400BA62A5 /* system.tga in Resources */ = {isa = PBXBuildFile; fileRef = BA00290314E26CB400BA62A5 /* system.tga */; };
-		BA00290B14E26CB400BA62A5 /* post_fragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = BA00290514E26CB400BA62A5 /* post_fragment.glsl */; };
-		BA00290C14E26CB400BA62A5 /* post_vertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = BA00290614E26CB400BA62A5 /* post_vertex.glsl */; };
-		BA00290D14E26CB400BA62A5 /* sprites.tga in Resources */ = {isa = PBXBuildFile; fileRef = BA00290814E26CB400BA62A5 /* sprites.tga */; };
 		BA00290E14E26D5A00BA62A5 /* demo.c in Sources */ = {isa = PBXBuildFile; fileRef = BAEADB2E14E269510080C5A0 /* demo.c */; };
 		BA9A1A4614E4B7B400AB44C4 /* post_vertex_shader.h in Headers */ = {isa = PBXBuildFile; fileRef = BA9A1A4514E4B3CF00AB44C4 /* post_vertex_shader.h */; };
 		BA9A1A4714E4B7B900AB44C4 /* post_fragment_shader.h in Headers */ = {isa = PBXBuildFile; fileRef = BA9A1A4414E4B3CF00AB44C4 /* post_fragment_shader.h */; };
@@ -21,7 +16,6 @@
 		BAA4BBEC14E2CEFB008A6342 /* texture.c in Sources */ = {isa = PBXBuildFile; fileRef = BAA4BBEB14E2CEFB008A6342 /* texture.c */; };
 		BAA4BBEF14E2CF22008A6342 /* texture.h in Headers */ = {isa = PBXBuildFile; fileRef = BAA4BBEE14E2CF22008A6342 /* texture.h */; };
 		BAA4BC0314E38E6F008A6342 /* sprites_texture.h in Headers */ = {isa = PBXBuildFile; fileRef = BAA4BBFA14E38581008A6342 /* sprites_texture.h */; };
-		BAA4BC0614E41522008A6342 /* test.c in Sources */ = {isa = PBXBuildFile; fileRef = BAA4BC0514E41522008A6342 /* test.c */; };
 		BAEADB0F14E267C10080C5A0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEADB0E14E267C10080C5A0 /* Cocoa.framework */; };
 		BAEADB1914E267C10080C5A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BAEADB1714E267C10080C5A0 /* InfoPlist.strings */; };
 		BAEADB1B14E267C10080C5A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BAEADB1A14E267C10080C5A0 /* main.m */; };
@@ -56,7 +50,6 @@
 		BAA4BBF614E32E7D008A6342 /* Rakefile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Rakefile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BAA4BBF814E332FB008A6342 /* manifest.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = manifest.yml; sourceTree = "<group>"; };
 		BAA4BBFA14E38581008A6342 /* sprites_texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sprites_texture.h; sourceTree = "<group>"; };
-		BAA4BC0514E41522008A6342 /* test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test.c; sourceTree = "<group>"; };
 		BAEADB0B14E267C00080C5A0 /* Demo (Mac).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Demo (Mac).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEADB0E14E267C10080C5A0 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		BAEADB1114E267C10080C5A0 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -204,7 +197,6 @@
 				BAA4BBF614E32E7D008A6342 /* Rakefile */,
 				BAA4BBF014E2D888008A6342 /* Makefile */,
 				BAEADB2E14E269510080C5A0 /* demo.c */,
-				BAA4BC0514E41522008A6342 /* test.c */,
 				BAEADB1414E267C10080C5A0 /* DemoMac */,
 				BAEADB0D14E267C00080C5A0 /* Frameworks */,
 				BAF38B5C14E2657A00859821 /* Products */,
@@ -346,11 +338,6 @@
 				BAEADB1914E267C10080C5A0 /* InfoPlist.strings in Resources */,
 				BAEADB1F14E267C10080C5A0 /* Credits.rtf in Resources */,
 				BAEADB2514E267C10080C5A0 /* MainMenu.xib in Resources */,
-				BA00290914E26CB400BA62A5 /* system.fnt in Resources */,
-				BA00290A14E26CB400BA62A5 /* system.tga in Resources */,
-				BA00290B14E26CB400BA62A5 /* post_fragment.glsl in Resources */,
-				BA00290C14E26CB400BA62A5 /* post_vertex.glsl in Resources */,
-				BA00290D14E26CB400BA62A5 /* sprites.tga in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,7 +362,6 @@
 				BAF38B6F14E265EC00859821 /* utility.c in Sources */,
 				BA00290E14E26D5A00BA62A5 /* demo.c in Sources */,
 				BAA4BBEC14E2CEFB008A6342 /* texture.c in Sources */,
-				BAA4BC0614E41522008A6342 /* test.c in Sources */,
 				BA9A1A4B14E4F5BE00AB44C4 /* renderer.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

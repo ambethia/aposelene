@@ -8,7 +8,7 @@
 #ifndef aposelene_renderer_h
 #define aposelene_renderer_h
 
-void asInit(int width, int height);
+void asInitialize(int width, int height);
 
 void asRender(double deltaTime);
 
@@ -16,6 +16,6 @@ void asRendererReshape(int width, int height);
 
 void asRendererCallback(void (*renderCallback)(double));
 
-void asTerminate();
+void asTerminate(void);
 
 #endif

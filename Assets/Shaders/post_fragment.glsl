@@ -5,9 +5,9 @@
 //  Copyright 2012 Jason L Perry. All rights reserved.
 //
 
-uniform sampler2D fbo_texture;
-uniform vec4 screen_sizes;
-varying vec2 f_texcoord;
+uniform sampler2D fboTexture;
+uniform vec4 screenSize;
+varying vec2 fragmentTexCoord;
 
 float pseudoRand(vec2 co){
   return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
@@ -18,7 +18,7 @@ vec4 squeeze(float value, float min) {
 }
 
 void main(void) {
-  vec4 color = texture2D(fbo_texture, f_texcoord);
+  vec4 color = texture2D(fboTexture, fragmentTexCoord);
 
   /*
    * BLOOM FILTER
@@ -28,7 +28,7 @@ void main(void) {
   vec4 bloom;
   for(int i= -4 ;i < 4; i++) {
     for (int j = -3; j < 3; j++) {
-      sum += texture2D(fbo_texture, f_texcoord + vec2(j, i)*0.004) * 0.25;
+      sum += texture2D(fboTexture, fragmentTexCoord + vec2(j, i)*0.004) * 0.25;
     }
   }
   if (color.r < 0.3) {
@@ -46,12 +46,12 @@ void main(void) {
    */
 
   // The two screen sizes are packed into one vec4
-  vec2 faux = screen_sizes.xy;
-  vec2 clip = screen_sizes.zw;
+  vec2 faux = screenSize.xy;
+  vec2 clip = screenSize.zw;
   vec2 scale = clip / faux;
 
   // We want to flip on x, so the shading appears lit from the top left
-  vec2 coords = vec2(1.0 - f_texcoord.x, f_texcoord.y);
+  vec2 coords = vec2(1.0 - fragmentTexCoord.x, fragmentTexCoord.y);
 
   // Now figure out the shading for each superpixel
   vec2 step = mod(coords * clip, scale);
@@ -61,7 +61,7 @@ void main(void) {
    * NOISE
    */
   
-  vec4 noise = squeeze(pseudoRand(f_texcoord), 0.1);
+  vec4 noise = squeeze(pseudoRand(fragmentTexCoord), 0.1);
 
   /*
    * OUTPUT
