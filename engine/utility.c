@@ -8,46 +8,24 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdarg.h>
+#include <string.h>
 #include <unistd.h>
 #include <regex.h>
 
 #include "utility.h"
 
-static void *asFileContents(const char *filename, GLint *length)
+static GLuint asCreateShader(GLenum eShaderType, const GLchar *source)
 {
-  FILE *f = fopen(filename, "r");
-  void *buffer;
-
-  if (!f) {
-    fprintf(stderr, "Unable to open %s for reading\n", filename);
-    return NULL;
-  }
-
-  fseek(f, 0, SEEK_END);
-  *length = (GLint)ftell(f);
-  fseek(f, 0, SEEK_SET);
-
-  buffer = malloc(*length+1);
-  *length = (GLint)fread(buffer, 1, *length, f);
-  fclose(f);
-  ((char*)buffer)[*length] = '\0';
-
-  return buffer;
-}
-
-static GLuint asCreateShader(GLenum eShaderType  , const char *filename)
-{
-  GLint length;
+  GLint length = strlen(source);
   GLuint shader;
   GLint status;
-  GLchar *source = asFileContents(filename, &length);
   
   if (!source)
     return 0;
   
   shader = glCreateShader(eShaderType);
   
-  glShaderSource(shader, 1, (const GLchar**)&source, &length);
+  glShaderSource(shader, 1, &source, &length);
   glCompileShader(shader);
   
   glGetShaderiv(shader, GL_COMPILE_STATUS, &status);
@@ -90,8 +68,8 @@ GLuint asCreateShaderProgram(int numArgs, ...)
   
   for (i = 0; i < numShaders; i++) {
     GLenum type = va_arg(argp, GLenum);
-    const char* filename = va_arg(argp, const char*);
-    shaders[i] = asCreateShader(type, filename);
+    const char* shaderSource = va_arg(argp, const char*);
+    shaders[i] = asCreateShader(type, shaderSource);
     glAttachShader(program, shaders[i]);
   }
   va_end(argp);

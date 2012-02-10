@@ -10,10 +10,12 @@
 		BA0028FC14E26B3300BA62A5 /* libAposelene.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF38B5B14E2657A00859821 /* libAposelene.a */; };
 		BA00290914E26CB400BA62A5 /* system.fnt in Resources */ = {isa = PBXBuildFile; fileRef = BA00290214E26CB400BA62A5 /* system.fnt */; };
 		BA00290A14E26CB400BA62A5 /* system.tga in Resources */ = {isa = PBXBuildFile; fileRef = BA00290314E26CB400BA62A5 /* system.tga */; };
-		BA00290B14E26CB400BA62A5 /* post.f.glsl in Resources */ = {isa = PBXBuildFile; fileRef = BA00290514E26CB400BA62A5 /* post.f.glsl */; };
-		BA00290C14E26CB400BA62A5 /* post.v.glsl in Resources */ = {isa = PBXBuildFile; fileRef = BA00290614E26CB400BA62A5 /* post.v.glsl */; };
+		BA00290B14E26CB400BA62A5 /* post_fragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = BA00290514E26CB400BA62A5 /* post_fragment.glsl */; };
+		BA00290C14E26CB400BA62A5 /* post_vertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = BA00290614E26CB400BA62A5 /* post_vertex.glsl */; };
 		BA00290D14E26CB400BA62A5 /* sprites.tga in Resources */ = {isa = PBXBuildFile; fileRef = BA00290814E26CB400BA62A5 /* sprites.tga */; };
 		BA00290E14E26D5A00BA62A5 /* demo.c in Sources */ = {isa = PBXBuildFile; fileRef = BAEADB2E14E269510080C5A0 /* demo.c */; };
+		BA9A1A4614E4B7B400AB44C4 /* post_vertex_shader.h in Headers */ = {isa = PBXBuildFile; fileRef = BA9A1A4514E4B3CF00AB44C4 /* post_vertex_shader.h */; };
+		BA9A1A4714E4B7B900AB44C4 /* post_fragment_shader.h in Headers */ = {isa = PBXBuildFile; fileRef = BA9A1A4414E4B3CF00AB44C4 /* post_fragment_shader.h */; };
 		BAA4BBEC14E2CEFB008A6342 /* texture.c in Sources */ = {isa = PBXBuildFile; fileRef = BAA4BBEB14E2CEFB008A6342 /* texture.c */; };
 		BAA4BBEF14E2CF22008A6342 /* texture.h in Headers */ = {isa = PBXBuildFile; fileRef = BAA4BBEE14E2CF22008A6342 /* texture.h */; };
 		BAA4BC0314E38E6F008A6342 /* sprites_texture.h in Headers */ = {isa = PBXBuildFile; fileRef = BAA4BBFA14E38581008A6342 /* sprites_texture.h */; };
@@ -38,9 +40,11 @@
 /* Begin PBXFileReference section */
 		BA00290214E26CB400BA62A5 /* system.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = system.fnt; sourceTree = "<group>"; };
 		BA00290314E26CB400BA62A5 /* system.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = system.tga; sourceTree = "<group>"; };
-		BA00290514E26CB400BA62A5 /* post.f.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = post.f.glsl; sourceTree = "<group>"; };
-		BA00290614E26CB400BA62A5 /* post.v.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = post.v.glsl; sourceTree = "<group>"; };
+		BA00290514E26CB400BA62A5 /* post_fragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = post_fragment.glsl; sourceTree = "<group>"; };
+		BA00290614E26CB400BA62A5 /* post_vertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = post_vertex.glsl; sourceTree = "<group>"; };
 		BA00290814E26CB400BA62A5 /* sprites.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = sprites.tga; sourceTree = "<group>"; };
+		BA9A1A4414E4B3CF00AB44C4 /* post_fragment_shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = post_fragment_shader.h; sourceTree = "<group>"; };
+		BA9A1A4514E4B3CF00AB44C4 /* post_vertex_shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = post_vertex_shader.h; sourceTree = "<group>"; };
 		BAA4BBEB14E2CEFB008A6342 /* texture.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = texture.c; sourceTree = "<group>"; };
 		BAA4BBEE14E2CF22008A6342 /* texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = texture.h; sourceTree = "<group>"; };
 		BAA4BBF014E2D888008A6342 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
@@ -119,8 +123,8 @@
 		BA00290414E26CB400BA62A5 /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
-				BA00290514E26CB400BA62A5 /* post.f.glsl */,
-				BA00290614E26CB400BA62A5 /* post.v.glsl */,
+				BA00290514E26CB400BA62A5 /* post_fragment.glsl */,
+				BA00290614E26CB400BA62A5 /* post_vertex.glsl */,
 			);
 			path = Shaders;
 			sourceTree = "<group>";
@@ -136,6 +140,8 @@
 		BAA4BBF914E38581008A6342 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BA9A1A4414E4B3CF00AB44C4 /* post_fragment_shader.h */,
+				BA9A1A4514E4B3CF00AB44C4 /* post_vertex_shader.h */,
 				BAA4BBFA14E38581008A6342 /* sprites_texture.h */,
 			);
 			path = Resources;
@@ -239,6 +245,8 @@
 				BAF38B7014E265EC00859821 /* utility.h in Headers */,
 				BAA4BBEF14E2CF22008A6342 /* texture.h in Headers */,
 				BAA4BC0314E38E6F008A6342 /* sprites_texture.h in Headers */,
+				BA9A1A4614E4B7B400AB44C4 /* post_vertex_shader.h in Headers */,
+				BA9A1A4714E4B7B900AB44C4 /* post_fragment_shader.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,8 +341,8 @@
 				BAEADB2514E267C10080C5A0 /* MainMenu.xib in Resources */,
 				BA00290914E26CB400BA62A5 /* system.fnt in Resources */,
 				BA00290A14E26CB400BA62A5 /* system.tga in Resources */,
-				BA00290B14E26CB400BA62A5 /* post.f.glsl in Resources */,
-				BA00290C14E26CB400BA62A5 /* post.v.glsl in Resources */,
+				BA00290B14E26CB400BA62A5 /* post_fragment.glsl in Resources */,
+				BA00290C14E26CB400BA62A5 /* post_vertex.glsl in Resources */,
 				BA00290D14E26CB400BA62A5 /* sprites.tga in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

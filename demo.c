@@ -11,7 +11,11 @@
 #include <GL/glfw.h>
 
 #include "aposelene.h"
+
+// Resources
 #include "sprites_texture.h"
+#include "post_vertex_shader.h"
+#include "post_fragment_shader.h"
 
 #define DRAW_RATE 0.05f
 #define INVERT_TEXTURE_COORDS 0
@@ -292,8 +296,8 @@ int initFrameBuffer()
 
   /* Post-processing */
   program_postproc = asCreateShaderProgram(4,
-    GL_VERTEX_SHADER, "Assets/Shaders/post.v.glsl",
-    GL_FRAGMENT_SHADER, "Assets/Shaders/post.f.glsl");
+    GL_VERTEX_SHADER, post_vertex_shader,
+    GL_FRAGMENT_SHADER, post_fragment_shader);
 
   char *attribute_name = "v_coord";
   attribute_v_coord_postproc = glGetAttribLocation(program_postproc, attribute_name);

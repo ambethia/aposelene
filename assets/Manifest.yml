@@ -1,7 +1,7 @@
 textures:
   - sprites.png
 shaders:
-  - post.f.glsl
-  - post.v.glsl
+  - post_fragment.glsl
+  - post_vertex.glsl
 fonts:
   - system.fnt

@@ -1,5 +1,5 @@
 //
-//  post.f.glsl
+//  post_fragment.glsl
 //  Aposelene
 //
 //  Copyright 2012 Jason L Perry. All rights reserved.
