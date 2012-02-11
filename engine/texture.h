@@ -10,18 +10,16 @@
 
 #include "common.h"
 
-struct ASTexture {
+typedef struct ASTexture {
   GLuint name;
   ASVector2D size;
-};
-typedef struct ASTexture ASTexture;
+} ASTexture;
 
-struct ASTextureResource {
+typedef struct ASTextureResource {
   int width;
   int height;
   unsigned int *pixels;
-};
-typedef struct ASTextureResource ASTextureResource;
+} ASTextureResource;
 
 
 ASTexture * asTextureCreate(ASTextureResource *resource);

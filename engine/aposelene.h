@@ -11,6 +11,7 @@
 #include "common.h"
 #include "font.h"
 #include "renderer.h"
+#include "sprite.h"
 #include "texture.h"
 #include "utility.h"
 

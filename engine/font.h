@@ -11,20 +11,18 @@
 #include "common.h"
 #include "texture.h"
 
-struct ASFontCharacter {
+typedef struct ASFontCharacter {
   int characterID;
   ASRect frame;
   ASVector2D offset;
   int advance;
-};
-typedef struct ASFontCharacter ASFontCharacter;
+} ASFontCharacter;
 
-struct ASFont {
+typedef struct ASFont {
   ASTexture *texture;
   ASFontCharacter *characters;
   ASColor colorFilter;
-};
-typedef struct ASFont ASFont;
+} ASFont;
 
 ASFont * asFontCreate(char *fontname);
 

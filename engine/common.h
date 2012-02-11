@@ -10,61 +10,54 @@
 
 #include <OpenGL/gl.h>
 
-struct ASVector2D {
+typedef struct ASVector2D {
   GLint x;
   GLint y;
-};
-typedef struct ASVector2D ASVector2D;
+} ASVector2D;
 
 inline ASVector2D ASVector2DMake(GLint x, GLint y);
 
-struct ASVector2Df {
+typedef struct ASVector2Df {
   GLfloat x;
   GLfloat y;
-};
-typedef struct ASVector2Df ASVector2Df;
+} ASVector2Df;
 
 inline ASVector2Df ASVector2DfMake(GLfloat x, GLfloat y);
 
-struct ASRect {
+typedef struct ASRect {
   ASVector2D origin;
   ASVector2D size;
-};
-typedef struct ASRect ASRect;
+} ASRect;
 
 inline ASRect ASRectMake(GLint xOrigin, GLint yOrigin, GLint xSize, GLint ySize);
 
-struct ASRectf {
+typedef struct ASRectf {
   ASVector2Df origin;
   ASVector2Df size;
-};
-typedef struct ASRectf ASRectf;
+} ASRectf;
 
 inline ASRectf ASRectfMake(GLfloat xOrigin, GLfloat yOrigin, GLfloat xSize, GLfloat ySize);
 
-struct ASQuad {
+typedef struct ASQuad {
   ASVector2D v0;
   ASVector2D v1;
   ASVector2D v2;
   ASVector2D v3;
-};
-typedef struct ASQuad ASQuad;
+} ASQuad;
 
-struct ASQuadf {
+typedef struct ASQuadf {
   ASVector2Df v0;
   ASVector2Df v1;
   ASVector2Df v2;
   ASVector2Df v3;
-};
-typedef struct ASQuadf ASQuadf;
+} ASQuadf;
 
-struct ASColor {
+typedef struct ASColor {
   GLfloat red;
   GLfloat green;
   GLfloat blue;
   GLfloat alpha;
-};
-typedef struct ASColor ASColor;
+} ASColor;
 
 inline ASColor ASColorMake(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
 
