@@ -78,8 +78,8 @@ static void draw(double deltaTime)
   ASRect background = ASRectMake(zero_texcoords[40], zero_texcoords[41], zero_texcoords[42], zero_texcoords[43]);
   ASRect zero = ASRectMake(sIndex, tIndex, xOffset, yOffset);
 
-  asTextureDraw(texture, background, ASVector2DMake(0, 0));
-  asTextureDraw(texture, zero, ASVector2DMake(round(position.x), round(position.y)));
+  asTextureDrawImmediate(texture, background, ASVector2DMake(0, 0));
+  asTextureDrawImmediate(texture, zero, ASVector2DMake(round(position.x), round(position.y)));
 
   frameIndex += 1.0f * (deltaTime * ZERO_FRAME_STEP);
 }

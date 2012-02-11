@@ -28,6 +28,6 @@ ASTexture * asTextureCreate(ASTextureResource *resource);
 
 void asTextureDestroy(ASTexture *self);
 
-void asTextureDraw(ASTexture *self, ASRect frame, ASVector2D position);
+void asTextureDrawImmediate(ASTexture *self, ASRect frame, ASVector2D position);
 
 #endif
