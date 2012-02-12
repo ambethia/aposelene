@@ -6,20 +6,14 @@
 //
 
 #include <stdlib.h>
-#include <string.h>
+
 #include "font.h"
 
-ASFont * asFontCreate(char *fontName)
+ASFont * asFontCreate(ASTextureResource *texture)
 {
   ASFont *font; 
   font = (ASFont *)malloc(sizeof(ASFont));
-
-  char textureName[strlen(fontName) + 4];
-  strcpy(textureName, fontName);
-  strcat(textureName, ".tga");
-//  font->texture = asTextureCreate(textureName);
-  
-  font->colorFilter = ASColorMake(1.0f, 1.0f, 1.0f, 1.0f);
+  font->texture = asTextureCreate(texture);
 
   return font;
 }
@@ -30,8 +24,4 @@ void asFontDestroy(ASFont *self)
     asTextureDestroy(self->texture); 
     free(self);
   } 
-}
-                
-void asFontDraw(ASFont *self, ASVector2D position, char *text)
-{
 }

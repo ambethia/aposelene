@@ -10,6 +10,7 @@
 #include "renderer.h"
 #include "common.h"
 #include "sprite.h"
+#include "text.h"
 #include "utility.h"
 
 #include "post_vertex_shader.h"
@@ -62,6 +63,7 @@ void asRender(double deltaTime)
   // Draw all sprites
   glClear(GL_COLOR_BUFFER_BIT);
   asSpriteDraw();
+  asTextDraw();
   
   // Render that framebuffer now with post effects
   glBindFramebuffer(GL_FRAMEBUFFER, 0);

@@ -12,6 +12,7 @@
 #include "font.h"
 #include "renderer.h"
 #include "sprite.h"
+#include "text.h"
 #include "texture.h"
 #include "utility.h"
 

@@ -21,13 +21,10 @@ typedef struct ASFontCharacter {
 typedef struct ASFont {
   ASTexture *texture;
   ASFontCharacter *characters;
-  ASColor colorFilter;
 } ASFont;
 
-ASFont * asFontCreate(char *fontname);
+ASFont * asFontCreate(ASTextureResource *texture);
 
 void asFontDestroy(ASFont *self);
-
-void asFontDraw(ASFont *self, ASVector2D position, char *text);
 
 #endif

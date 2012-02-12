@@ -17,13 +17,14 @@
 
 #define ZERO_VELOCITY 40
 
-int fauxWidth = 160;
-int fauxHeight = 144;
+int fauxWidth = 100;
+int fauxHeight = 75;
 
-int realWidth = 640;
-int realHeight = 576;
+int realWidth = 400;
+int realHeight = 300;
 
 ASTexture *texture;
+ASFont *font;
 ASSprite *coin;
 
 static void init()
@@ -32,19 +33,18 @@ static void init()
   ASVector2Df position = ASVector2DfMake(fauxWidth / 2.0f, fauxHeight / 2.0f);
   coin = asSpriteCreate(texture, coin_spin_animation, position);
   coin->velocity = ASVector2DfMake(0.0f, -15.0f);
+
+//  font = asFontCreate(NULL);
+//  ASText *text = asTextCreate("Hello, World!", ASVector2DfMake(1.0f, 1.0f), font);
 }
 
 static void update(double deltaTime)
 {
   if(coin->position.x > fauxWidth)
-  {
     coin->position.x = -16.0f;
-  }
 
   if(coin->position.y < -16.0f)
-  {
     coin->position.y = fauxHeight;
-  }
 }
 
 int main (int argc, char const *argv[])
