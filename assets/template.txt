@@ -1,0 +1,12 @@
+
+enum {{ metadata.target.textureFileName }}_atlasFrame {{% for sprite in spritesAndAliases %}
+  {{ sprite.nameWithoutExtension }},{% /for %}
+};
+
+int {{ metadata.target.textureFileName }}_atlasData[] = {{% for sprite in spritesAndAliases %}
+  // {{ sprite.name }}
+  {{ sprite.textureRectX }}, {{ sprite.textureRectY }}, // position
+  {{ sprite.sourceSizeWidth }}, {{ sprite.sourceSizeHeight }}, // size
+  {{ sprite.sourceColorRectX }}, {{ sprite.sourceColorRectY }}, // clip position
+  {{ sprite.textureRectWidth }}, {{ sprite.textureRectHeight }}, // clip size
+{% /for %}};

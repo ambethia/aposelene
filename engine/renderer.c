@@ -9,6 +9,7 @@
 
 #include "renderer.h"
 #include "common.h"
+#include "sprite.h"
 #include "utility.h"
 
 #include "post_vertex_shader.h"
@@ -57,12 +58,13 @@ void asRender(double deltaTime)
   glBindFramebuffer(GL_FRAMEBUFFER, renderer.fbo);
   glViewport(0, 0, renderer.size.x, renderer.size.y);
   renderer.renderCallback(deltaTime);
+
+  // Draw all sprites
+  asDrawSprites();
   
   // Render that framebuffer now with post effects
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
   glViewport(renderer.position.x, renderer.position.y, renderer.clip.x, renderer.clip.y);
-  glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-  glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
   
   glUseProgram(renderer.postShaderProgram);
   glBindTexture(GL_TEXTURE_2D, renderer.fboTexture);

@@ -1,5 +1,5 @@
 textures:
-  - sprites.png
+  - coin.png
 shaders:
   - post_fragment.glsl
   - post_vertex.glsl

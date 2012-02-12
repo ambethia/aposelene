@@ -11,7 +11,7 @@
 #include <GL/glfw.h>
 
 #include "aposelene.h"
-#include "sprites_texture.h"
+#include "coin_texture.h"
 
 #define DRAW_RATE 0.05f
 
@@ -26,62 +26,27 @@ int realWidth = 640;
 int realHeight = 576;
 
 ASTexture *texture;
-ASVector2Df position;
-
-float frameIndex;
-
-// u,v,width,height
-const unsigned int zero_texcoords[] = {
-  // Run animation
-  0,   0, 52, 46, // 0
- 52,   0, 52, 46, // 1
-  0,  46, 52, 46, // 2
- 52,  46, 52, 46, // 3
-  0,  92, 52, 46, // 4
- 52,  92, 52, 46, // 5
-  0, 138, 52, 46, // 6
-  0, 184, 52, 46, // 7
- 52, 138, 52, 46, // 8
- 52, 184, 52, 46, // 9
- // Background
-  0, 233, 160, 144
-};
+ASSprite *coin;
 
 static void init()
 {
-  texture = asTextureCreate(sprites_texture);
-  position.x = 0.0f;
-  position.y = 6.0f;
-  frameIndex = 0.0f;
+  coin = asSpriteCreate(texture, ASVector2DfMake(0.0f, 0.0f), 0.0f);
 }
 
 static void draw(double deltaTime)
 {
-
-  position.x += ZERO_VELOCITY * deltaTime;
-  if(position.x > fauxWidth)
+  coin->position.x += ZERO_VELOCITY * deltaTime;
+  if(coin->position.x > fauxWidth)
   {
-    position.x = 1.0f - 52.0f;
+    coin->position.x = -52.0f;
   }
 
-  if(frameIndex >= ZERO_NUM_FRAMES - 1)
+  if(coin->frame >= ZERO_NUM_FRAMES - 1)
   {
-    frameIndex = 0.0f;
+    coin->frame = 0.0f;
   }
 
-  int frame = round(frameIndex);
-  int sIndex = zero_texcoords[frame * 4];
-  int tIndex = zero_texcoords[frame * 4 + 1];
-  int xOffset = zero_texcoords[frame * 4 + 2];
-  int yOffset = zero_texcoords[frame * 4 + 3];
-  
-  ASRect background = ASRectMake(zero_texcoords[40], zero_texcoords[41], zero_texcoords[42], zero_texcoords[43]);
-  ASRect zero = ASRectMake(sIndex, tIndex, xOffset, yOffset);
-
-  asTextureDrawImmediate(texture, background, ASVector2DMake(0, 0));
-  asTextureDrawImmediate(texture, zero, ASVector2DMake(round(position.x), round(position.y)));
-
-  frameIndex += 1.0f * (deltaTime * ZERO_FRAME_STEP);
+  coin->frame += 1.0f * (deltaTime * ZERO_FRAME_STEP);
 }
 int main (int argc, char const *argv[])
 {

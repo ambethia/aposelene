@@ -21,7 +21,6 @@ typedef struct ASTextureResource {
   unsigned int *pixels;
 } ASTextureResource;
 
-
 ASTexture * asTextureCreate(ASTextureResource *resource);
 
 void asTextureDestroy(ASTexture *self);

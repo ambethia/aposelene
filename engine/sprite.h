@@ -12,8 +12,20 @@
 
 typedef struct ASSprite {
   ASTexture *texture;
-  ASVector2D *position;
-  ASSprite *next;
+  ASVector2Df position;
+  float frame;
+  struct ASSprite *link;
 } ASSprite;
+
+struct {
+  ASSprite *alpha;
+  ASSprite *omega;
+} ASSpriteList;
+
+ASSprite * asSpriteCreate(ASTexture *texture, ASVector2Df position, float frame);
+
+void asSpriteDestroy(ASSprite *self);
+
+void asDrawSprites(void);
 
 #endif

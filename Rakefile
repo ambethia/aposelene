@@ -54,11 +54,14 @@ def dump_texture_resource(path_to_file)
   png = ChunkyPNG::Image.from_file(path_to_file)
   height = png.height
   width = png.width
-  data = "".tap do |data|
+  pixel_data = "".tap do |data|
     png.pixels.each_slice(4) do |row|
       data << row.map { |x| "0x%02x" % x }.join(", ") + ",\n    "
     end
   end
+
+  path_to_atlas = path_to_file.gsub(/\.png$/, ".txt")
+  
   source = <<-EOF
 //
 //  #{name}.h
@@ -72,11 +75,11 @@ def dump_texture_resource(path_to_file)
 #define _#{name}_h
 
 #include "aposelene.h"
-
+#{File.open(path_to_atlas).read}
 static const ASTextureResource _#{name} = {
   #{width}, #{height},
   (unsigned int[#{height * width}]) {
-    #{data}}
+    #{pixel_data}}
 };
 ASTextureResource *#{name} = (ASTextureResource *)&_#{name};
 #endif

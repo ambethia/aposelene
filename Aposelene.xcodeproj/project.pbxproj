@@ -17,7 +17,7 @@
 		BAA4BBEF14E2CF22008A6342 /* texture.h in Headers */ = {isa = PBXBuildFile; fileRef = BAA4BBEE14E2CF22008A6342 /* texture.h */; };
 		BAA4BC0314E38E6F008A6342 /* sprites_texture.h in Headers */ = {isa = PBXBuildFile; fileRef = BAA4BBFA14E38581008A6342 /* sprites_texture.h */; };
 		BAAABAFD14E6431A001A14F4 /* sprite.c in Sources */ = {isa = PBXBuildFile; fileRef = BAAABAFC14E6431A001A14F4 /* sprite.c */; };
-		BAAABB0014E64332001A14F4 /* sprite.h in Headers */ = {isa = PBXBuildFile; fileRef = BAAABAFF14E64332001A14F4 /* sprite.h */; };
+		BAAABB0114E6542E001A14F4 /* sprite.h in Headers */ = {isa = PBXBuildFile; fileRef = BAAABAFF14E64332001A14F4 /* sprite.h */; };
 		BAEADB0F14E267C10080C5A0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEADB0E14E267C10080C5A0 /* Cocoa.framework */; };
 		BAEADB1914E267C10080C5A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BAEADB1714E267C10080C5A0 /* InfoPlist.strings */; };
 		BAEADB1B14E267C10080C5A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BAEADB1A14E267C10080C5A0 /* main.m */; };
@@ -40,7 +40,6 @@
 		BA00290314E26CB400BA62A5 /* system.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = system.tga; sourceTree = "<group>"; };
 		BA00290514E26CB400BA62A5 /* post_fragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = post_fragment.glsl; sourceTree = "<group>"; };
 		BA00290614E26CB400BA62A5 /* post_vertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = post_vertex.glsl; sourceTree = "<group>"; };
-		BA00290814E26CB400BA62A5 /* sprites.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = sprites.tga; sourceTree = "<group>"; };
 		BA9A1A4414E4B3CF00AB44C4 /* post_fragment_shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = post_fragment_shader.h; sourceTree = "<group>"; };
 		BA9A1A4514E4B3CF00AB44C4 /* post_vertex_shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = post_vertex_shader.h; sourceTree = "<group>"; };
 		BA9A1A4814E4F58100AB44C4 /* renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = renderer.h; sourceTree = "<group>"; };
@@ -54,6 +53,7 @@
 		BAA4BBFA14E38581008A6342 /* sprites_texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sprites_texture.h; sourceTree = "<group>"; };
 		BAAABAFC14E6431A001A14F4 /* sprite.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sprite.c; sourceTree = "<group>"; };
 		BAAABAFF14E64332001A14F4 /* sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sprite.h; sourceTree = "<group>"; };
+		BAAABB0814E785D3001A14F4 /* coin_texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coin_texture.h; sourceTree = "<group>"; };
 		BAEADB0B14E267C00080C5A0 /* Demo (Mac).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Demo (Mac).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEADB0E14E267C10080C5A0 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		BAEADB1114E267C10080C5A0 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -133,7 +133,6 @@
 		BA00290714E26CB400BA62A5 /* Textures */ = {
 			isa = PBXGroup;
 			children = (
-				BA00290814E26CB400BA62A5 /* sprites.tga */,
 			);
 			path = Textures;
 			sourceTree = "<group>";
@@ -141,6 +140,7 @@
 		BAA4BBF914E38581008A6342 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BAAABB0814E785D3001A14F4 /* coin_texture.h */,
 				BA9A1A4414E4B3CF00AB44C4 /* post_fragment_shader.h */,
 				BA9A1A4514E4B3CF00AB44C4 /* post_vertex_shader.h */,
 				BAA4BBFA14E38581008A6342 /* sprites_texture.h */,
@@ -252,7 +252,7 @@
 				BA9A1A4614E4B7B400AB44C4 /* post_vertex_shader.h in Headers */,
 				BA9A1A4714E4B7B900AB44C4 /* post_fragment_shader.h in Headers */,
 				BA9A1A4914E4F58100AB44C4 /* renderer.h in Headers */,
-				BAAABB0014E64332001A14F4 /* sprite.h in Headers */,
+				BAAABB0114E6542E001A14F4 /* sprite.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
