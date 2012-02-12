@@ -55,7 +55,7 @@ void main(void) {
 
   // Now figure out the shading for each superpixel
   vec2 step = mod(coords * clip, scale);
-  vec4 gradient = squeeze((step.x + step.y) / (scale.x + scale.y), 0.3);
+  vec4 gradient = squeeze((step.x + step.y) / (scale.x + scale.y), 0.33);
 
   /*
    * NOISE

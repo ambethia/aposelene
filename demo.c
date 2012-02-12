@@ -15,9 +15,7 @@
 
 #define DRAW_RATE 0.05f
 
-#define ZERO_NUM_FRAMES 10
 #define ZERO_VELOCITY 40
-#define ZERO_FRAME_STEP 10
 
 int fauxWidth = 160;
 int fauxHeight = 144;
@@ -30,24 +28,25 @@ ASSprite *coin;
 
 static void init()
 {
-  coin = asSpriteCreate(texture, ASVector2DfMake(0.0f, 0.0f), 0.0f);
+  texture = asTextureCreate(coin_texture);
+  ASVector2Df position = ASVector2DfMake(fauxWidth / 2.0f, fauxHeight / 2.0f);
+  coin = asSpriteCreate(texture, coin_spin_animation, position);
+  coin->velocity = ASVector2DfMake(0.0f, -15.0f);
 }
 
-static void draw(double deltaTime)
+static void update(double deltaTime)
 {
-  coin->position.x += ZERO_VELOCITY * deltaTime;
   if(coin->position.x > fauxWidth)
   {
-    coin->position.x = -52.0f;
+    coin->position.x = -16.0f;
   }
 
-  if(coin->frame >= ZERO_NUM_FRAMES - 1)
+  if(coin->position.y < -16.0f)
   {
-    coin->frame = 0.0f;
+    coin->position.y = fauxHeight;
   }
-
-  coin->frame += 1.0f * (deltaTime * ZERO_FRAME_STEP);
 }
+
 int main (int argc, char const *argv[])
 {
   if (!glfwInit())
@@ -66,7 +65,7 @@ int main (int argc, char const *argv[])
 
   init();
 
-  asRendererCallback(draw);
+  asRendererCallback(update);
 
   int running = GL_TRUE;
   double lastTime = glfwGetTime();

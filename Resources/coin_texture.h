@@ -2,7 +2,6 @@
 //  coin_texture.h
 //  Aposelene
 //
-//  Generated 2012-02-12 00:35:58 -0500
 //  Copyright 2012 Jason L Perry. All rights reserved.
 //
 
@@ -16,37 +15,45 @@ enum coin_atlasFrame {
   coin_2,
   coin_3,
   coin_4,
+  coin_frameCount
 };
 
 int coin_atlasData[] = {
   // coin_1.png
-  0, 0, // position
-  16, 16, // size
-  0, 0, // clip position
-  16, 16, // clip size
+  0, 0,
+  16, 16,
+  0, 0,
+  16, 16,
 
   // coin_2.png
-  16, 0, // position
-  16, 16, // size
-  2, 0, // clip position
-  12, 16, // clip size
+  16, 0,
+  16, 16,
+  2, 0,
+  12, 16,
 
   // coin_3.png
-  0, 16, // position
-  16, 16, // size
-  4, 0, // clip position
-  8, 16, // clip size
+  0, 16,
+  16, 16,
+  4, 0,
+  8, 16,
 
   // coin_4.png
-  8, 16, // position
-  16, 16, // size
-  2, 0, // clip position
-  12, 16, // clip size
+  8, 16,
+  16, 16,
+  2, 0,
+  12, 16,
 };
+
+static const ASSpriteAnimation _coin_spin_animation = {
+  &coin_atlasData[0], 9, 4,
+  (int[4]){ coin_1, coin_2, coin_3, coin_4 }
+};
+ASSpriteAnimation *coin_spin_animation = (ASSpriteAnimation *)&_coin_spin_animation;
+
 
 static const ASTextureResource _coin_texture = {
   32, 32,
-  (unsigned int[1024]) {
+  (unsigned int[1024]){
     0xffffff00, 0xffffff00, 0xffffff00, 0xffffff00,
     0xffffff00, 0xff, 0xff, 0xff,
     0xff, 0xff, 0xff, 0xffffff00,

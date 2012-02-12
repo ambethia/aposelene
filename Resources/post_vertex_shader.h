@@ -2,7 +2,6 @@
 //  post_vertex_shader.h
 //  Aposelene
 //
-//  Generated 2012-02-12 00:35:58 -0500
 //  Copyright 2012 Jason L Perry. All rights reserved.
 //
 

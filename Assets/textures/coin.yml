@@ -1,0 +1,7 @@
+- name: spin
+  fps: 9
+  frames:
+    - coin_1
+    - coin_2
+    - coin_3
+    - coin_4

@@ -10,6 +10,7 @@
 
 void asInitialize(int width, int height);
 
+// TODO: Refactor this into seperate calls for render & updating game state
 void asRender(double deltaTime);
 
 void asRendererReshape(int width, int height);

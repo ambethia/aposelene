@@ -2,7 +2,6 @@
 //  post_fragment_shader.h
 //  Aposelene
 //
-//  Generated 2012-02-12 00:35:58 -0500
 //  Copyright 2012 Jason L Perry. All rights reserved.
 //
 
@@ -51,7 +50,7 @@ static const char *post_fragment_shader =
   "  vec2 coords = vec2(1.0 - fragmentTexCoord.x, fragmentTexCoord.y);\n"
   "  // Now figure out the shading for each superpixel\n"
   "  vec2 step = mod(coords * clip, scale);\n"
-  "  vec4 gradient = squeeze((step.x + step.y) / (scale.x + scale.y), 0.3);\n"
+  "  vec4 gradient = squeeze((step.x + step.y) / (scale.x + scale.y), 0.33);\n"
   "  /*\n"
   "   * NOISE\n"
   "   */\n"

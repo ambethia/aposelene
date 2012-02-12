@@ -31,7 +31,6 @@ def dump_shader_resource(path_to_file)
 //  #{name}.h
 //  Aposelene
 //
-//  Generated #{Time.now}
 //  Copyright #{Date.today.year} Jason L Perry. All rights reserved.
 //
 
@@ -47,8 +46,8 @@ static const char *#{name} =#{data};
 end
 
 def dump_texture_resource(path_to_file)
-  name =  "#{File.basename(path_to_file, ".png")}_texture"
-  resource = "Resources/#{name}.h"
+  name =  "#{File.basename(path_to_file, ".png")}"
+  resource = "Resources/#{name}_texture.h"
   print("Generating #{resource}...")
 
   png = ChunkyPNG::Image.from_file(path_to_file)
@@ -61,27 +60,43 @@ def dump_texture_resource(path_to_file)
   end
 
   path_to_atlas = path_to_file.gsub(/\.png$/, ".txt")
+  atlas_data = File.exist?(path_to_atlas) ? File.open(path_to_atlas).read : ""
+
+  animations = ""
+  path_to_yml = path_to_file.gsub(/\.png$/, ".yml")
+  yml = YAML.load_file(path_to_yml)
+  yml.each_with_index do |anim|
+    src = <<-EOF
+
+static const ASSpriteAnimation _#{name}_#{anim["name"]}_animation = {
+  &#{name}_atlasData[0], #{anim["fps"]}, #{anim["frames"].size},
+  (int[#{anim["frames"].size}]){ #{anim["frames"].join(", ")} }
+};
+ASSpriteAnimation *#{name}_#{anim["name"]}_animation = (ASSpriteAnimation *)&_#{name}_#{anim["name"]}_animation;
+
+    EOF
+    animations << src
+  end
   
   source = <<-EOF
 //
-//  #{name}.h
+//  #{name}_texture.h
 //  Aposelene
 //
-//  Generated #{Time.now}
 //  Copyright #{Date.today.year} Jason L Perry. All rights reserved.
 //
 
-#ifndef _#{name}_h
-#define _#{name}_h
+#ifndef _#{name}_texture_h
+#define _#{name}_texture_h
 
 #include "aposelene.h"
-#{File.open(path_to_atlas).read}
-static const ASTextureResource _#{name} = {
+#{atlas_data}#{animations}
+static const ASTextureResource _#{name}_texture = {
   #{width}, #{height},
-  (unsigned int[#{height * width}]) {
+  (unsigned int[#{height * width}]){
     #{pixel_data}}
 };
-ASTextureResource *#{name} = (ASTextureResource *)&_#{name};
+ASTextureResource *#{name}_texture = (ASTextureResource *)&_#{name}_texture;
 #endif
 
   EOF

@@ -1,12 +1,13 @@
 
 enum {{ metadata.target.textureFileName }}_atlasFrame {{% for sprite in spritesAndAliases %}
   {{ sprite.nameWithoutExtension }},{% /for %}
+  {{ metadata.target.textureFileName }}_frameCount
 };
 
 int {{ metadata.target.textureFileName }}_atlasData[] = {{% for sprite in spritesAndAliases %}
   // {{ sprite.name }}
-  {{ sprite.textureRectX }}, {{ sprite.textureRectY }}, // position
-  {{ sprite.sourceSizeWidth }}, {{ sprite.sourceSizeHeight }}, // size
-  {{ sprite.sourceColorRectX }}, {{ sprite.sourceColorRectY }}, // clip position
-  {{ sprite.textureRectWidth }}, {{ sprite.textureRectHeight }}, // clip size
+  {{ sprite.textureRectX }}, {{ sprite.textureRectY }},
+  {{ sprite.sourceSizeWidth }}, {{ sprite.sourceSizeHeight }},
+  {{ sprite.sourceColorRectX }}, {{ sprite.sourceColorRectY }},
+  {{ sprite.textureRectWidth }}, {{ sprite.textureRectHeight }},
 {% /for %}};

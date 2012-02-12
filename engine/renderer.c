@@ -52,15 +52,16 @@ void asRendererReshape(int width, int height) {
 
 void asRender(double deltaTime)
 {
-  glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
   // Render to off screen framebuffer
   glBindFramebuffer(GL_FRAMEBUFFER, renderer.fbo);
   glViewport(0, 0, renderer.size.x, renderer.size.y);
   renderer.renderCallback(deltaTime);
+  asSpriteUpdate(deltaTime);
 
   // Draw all sprites
-  asDrawSprites();
+  glClear(GL_COLOR_BUFFER_BIT);
+  asSpriteDraw();
   
   // Render that framebuffer now with post effects
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -78,6 +79,7 @@ void asRender(double deltaTime)
 
   glVertexAttribPointer(renderer.postVertexAttribute, 2, GL_FLOAT, GL_FALSE, 0, 0);
 
+  glClear(GL_COLOR_BUFFER_BIT);
   glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 
   glBindBuffer(GL_ARRAY_BUFFER, 0);
