@@ -1,14 +1,14 @@
-//
-//  post_fragment_shader.h
-//  Aposelene
-//
-//  Copyright 2012 Jason L Perry. All rights reserved.
-//
-
-#ifndef _post_fragment_shader_h
-#define _post_fragment_shader_h
-
-static const char *post_fragment_shader =
+  //
+  //  post_fragment_shader.h
+  //  Aposelene
+  //
+  //  Copyright 2012 Jason L Perry. All rights reserved.
+  //
+  
+  #ifndef _post_fragment_shader_h
+  #define _post_fragment_shader_h
+  
+  static const char *post_fragment_shader =
   "uniform sampler2D fboTexture;\n"
   "uniform vec4 screenSize;\n"
   "varying vec2 fragmentTexCoord;\n"
@@ -60,5 +60,5 @@ static const char *post_fragment_shader =
   "   */\n"
   "  gl_FragColor = bloom * gradient * noise;\n"
   "}\n";
-#endif
-
+  #endif
+  

@@ -15,6 +15,7 @@ typedef struct ASText {
   char *string;
   ASVector2Df position;
   ASFont *font;
+  struct ASText *link;
 } ASText;
 
 ASText * asTextCreate(char *string, ASVector2Df position, ASFont *font);

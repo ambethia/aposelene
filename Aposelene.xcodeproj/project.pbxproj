@@ -67,6 +67,8 @@
 		BAAABB4D14E87BC4001A14F4 /* system.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = system.png; sourceTree = "<group>"; };
 		BAAABB5014E88146001A14F4 /* text.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = text.c; sourceTree = "<group>"; };
 		BAAABB5614E881AA001A14F4 /* text.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = text.h; sourceTree = "<group>"; };
+		BADB397414E8B97E00F25413 /* system_font.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = system_font.h; sourceTree = "<group>"; };
+		BADB397614E8BA8100F25413 /* system_font_texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = system_font_texture.h; sourceTree = "<group>"; };
 		BAEADB0B14E267C00080C5A0 /* Demo (Mac).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Demo (Mac).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEADB0E14E267C10080C5A0 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		BAEADB1114E267C10080C5A0 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -160,6 +162,8 @@
 		BAA4BBF914E38581008A6342 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BADB397614E8BA8100F25413 /* system_font_texture.h */,
+				BADB397414E8B97E00F25413 /* system_font.h */,
 				BAAABB0814E785D3001A14F4 /* coin_texture.h */,
 				BA9A1A4414E4B3CF00AB44C4 /* post_fragment_shader.h */,
 				BA9A1A4514E4B3CF00AB44C4 /* post_vertex_shader.h */,

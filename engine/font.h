@@ -11,19 +11,20 @@
 #include "common.h"
 #include "texture.h"
 
-typedef struct ASFontCharacter {
-  int characterID;
+typedef struct ASFontGlyph {
+  int ID;
   ASRect frame;
   ASVector2D offset;
   int advance;
-} ASFontCharacter;
+} ASFontGlyph;
 
 typedef struct ASFont {
+  int glyphCount;
+  ASFontGlyph *glyphs;
   ASTexture *texture;
-  ASFontCharacter *characters;
 } ASFont;
 
-ASFont * asFontCreate(ASTextureResource *texture);
+ASFont * asFontCreate(int glyphCount, ASFontGlyph *glyphs, ASTextureResource *texture);
 
 void asFontDestroy(ASFont *self);
 

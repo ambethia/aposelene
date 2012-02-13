@@ -5,6 +5,11 @@
 //  Copyright 2012 Jason L Perry. All rights reserved.
 //
 
+#define DRAW_RATE 0.05f
+
+#define SCREEN_WIDTH 100
+#define SCREEN_HEIGHT 75
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
@@ -12,39 +17,31 @@
 
 #include "aposelene.h"
 #include "coin_texture.h"
-
-#define DRAW_RATE 0.05f
-
-#define ZERO_VELOCITY 40
-
-int fauxWidth = 100;
-int fauxHeight = 75;
-
-int realWidth = 400;
-int realHeight = 300;
+#include "system_font.h"
 
 ASTexture *texture;
 ASFont *font;
 ASSprite *coin;
+ASText *text;
 
 static void init()
 {
   texture = asTextureCreate(coin_texture);
-  ASVector2Df position = ASVector2DfMake(fauxWidth / 2.0f, fauxHeight / 2.0f);
+  ASVector2Df position = ASVector2DfMake(42.0f, 75.0f);
   coin = asSpriteCreate(texture, coin_spin_animation, position);
   coin->velocity = ASVector2DfMake(0.0f, -15.0f);
 
-//  font = asFontCreate(NULL);
-//  ASText *text = asTextCreate("Hello, World!", ASVector2DfMake(1.0f, 1.0f), font);
+  font = asFontCreate(127, (ASFontGlyph *)&system_font_glyphs, system_font_texture);
+  text = asTextCreate("Hello, World!", ASVector2DfMake(2.0f, 8.0f), font);
 }
 
 static void update(double deltaTime)
 {
-  if(coin->position.x > fauxWidth)
+  if(coin->position.x > SCREEN_WIDTH)
     coin->position.x = -16.0f;
 
   if(coin->position.y < -16.0f)
-    coin->position.y = fauxHeight;
+    coin->position.y = SCREEN_HEIGHT;
 }
 
 int main (int argc, char const *argv[])
@@ -53,13 +50,13 @@ int main (int argc, char const *argv[])
     exit(EXIT_FAILURE);
 
   // Open an OpenGL window
-  if (!glfwOpenWindow(realWidth, realHeight, 0, 0, 0, 0, 0, 0, GLFW_WINDOW)) {
+  if (!glfwOpenWindow(SCREEN_WIDTH * 4, SCREEN_HEIGHT * 4, 0, 0, 0, 0, 0, 0, GLFW_WINDOW)) {
     glfwTerminate();
     exit(EXIT_FAILURE);
   }
   glfwSetWindowTitle("");
 
-  asInitialize(fauxWidth, fauxHeight);
+  asInitialize(SCREEN_WIDTH, SCREEN_HEIGHT);
 
   glfwSetWindowSizeCallback(asRendererReshape);
 

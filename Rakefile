@@ -1,7 +1,6 @@
-require 'yaml'
-require 'fileutils'
-
 require 'chunky_png'
+require 'fileutils'
+require 'yaml'
 
 task :resources do
   manifest = YAML.load_file("Assets/manifest.yml")
@@ -11,42 +10,52 @@ task :resources do
   manifest["shaders"].each do |file_name|
     dump_shader_resource("Assets/Shaders/#{file_name}")
   end
+  manifest["fonts"].each do |file_name|
+    dump_font_resource("Assets/Fonts/#{file_name}")
+  end
 end
 
-def dump_shader_resource(path_to_file)
-  name =  "#{File.basename(path_to_file, ".glsl")}_shader"
-  resource = "Resources/#{name}.h"
+def dump_font_resource(path_to_file)
+  name =  "#{File.basename(path_to_file, ".fnt")}"
+  resource = "Resources/#{name}_font.h"
+  dump_texture_resource(path_to_file.gsub(/\.fnt$/, ".png"), "#{name}_font")
   print("Generating #{resource}...")
 
-  glsl = File.open(path_to_file).read
-  data = "".tap do |data|
-    glsl.each_line do |line|
-      unless line =~ /^\/\/|^\s*$/
-        data << %[\n  "#{line.chomp}\\n"]
-      end
+  bmfont = File.open(path_to_file).read
+  characters = []
+  bmfont.lines.each do |line|
+    if line =~ /char id=([-0-9]+)\s+x=([-0-9]+)\s+y=([-0-9]+)\s+width=([-0-9]+)\s+height=([-0-9]+)\s+xoffset=([-0-9]+)\s+yoffset=([-0-9]+)\s+xadvance=([-0-9]+)/
+      # $~[1..8].map {|i| "%3d" % i}.join(", ")
+      characters[$1.to_i] = "  {#{$~[1]}, {{#{$~[2]}, #{$~[3]}}, {#{$~[4]}, #{$~[5]}}}, {#{$~[6]}, #{$~[7]}}, #{$~[8]}}, // \"#{$1.to_i.chr}\""
     end
   end
+  characters.map! { |line| line ||= "  {0, {{0, 0}, {0, 0}}, {0, 0}, 0}," }
   source = <<-EOF
 //
-//  #{name}.h
+//  #{name}_font.h
 //  Aposelene
 //
 //  Copyright #{Date.today.year} Jason L Perry. All rights reserved.
 //
 
-#ifndef _#{name}_h
-#define _#{name}_h
+#ifndef _#{name}_font_h
+#define _#{name}_font_h
 
-static const char *#{name} =#{data};
+#include "#{name}_font_texture.h"
+
+ASFontGlyph #{name}_font_glyphs[] = {
+#{characters.join("\n")}
+};
+
 #endif
-
+  
   EOF
   File.open(resource, 'w') { |file| file.write(source) }
   print "OK\n"
 end
 
-def dump_texture_resource(path_to_file)
-  name =  "#{File.basename(path_to_file, ".png")}"
+def dump_texture_resource(path_to_file, name = nil)
+  name ||=  "#{File.basename(path_to_file, ".png")}"
   resource = "Resources/#{name}_texture.h"
   print("Generating #{resource}...")
 
@@ -64,20 +73,21 @@ def dump_texture_resource(path_to_file)
 
   animations = ""
   path_to_yml = path_to_file.gsub(/\.png$/, ".yml")
-  yml = YAML.load_file(path_to_yml)
-  yml.each_with_index do |anim|
-    src = <<-EOF
+  if File.exist?(path_to_yml)
+    yml = YAML.load_file(path_to_yml)
+    yml.each do |anim|
+      src = <<-EOF
 
-static const ASSpriteAnimation _#{name}_#{anim["name"]}_animation = {
-  &#{name}_atlasData[0], #{anim["fps"]}, #{anim["frames"].size},
-  (int[#{anim["frames"].size}]){ #{anim["frames"].join(", ")} }
-};
-ASSpriteAnimation *#{name}_#{anim["name"]}_animation = (ASSpriteAnimation *)&_#{name}_#{anim["name"]}_animation;
+  static const ASSpriteAnimation _#{name}_#{anim["name"]}_animation = {
+    &#{name}_atlasData[0], #{anim["fps"]}, #{anim["frames"].size},
+    (int[#{anim["frames"].size}]){ #{anim["frames"].join(", ")} }
+  };
+  ASSpriteAnimation *#{name}_#{anim["name"]}_animation = (ASSpriteAnimation *)&_#{name}_#{anim["name"]}_animation;
 
-    EOF
-    animations << src
+      EOF
+      animations << src
+    end
   end
-  
   source = <<-EOF
 //
 //  #{name}_texture.h
@@ -99,6 +109,38 @@ static const ASTextureResource _#{name}_texture = {
 ASTextureResource *#{name}_texture = (ASTextureResource *)&_#{name}_texture;
 #endif
 
+  EOF
+  File.open(resource, 'w') { |file| file.write(source) }
+  print "OK\n"
+end
+
+def dump_shader_resource(path_to_file)
+  name =  "#{File.basename(path_to_file, ".glsl")}_shader"
+  resource = "Resources/#{name}.h"
+  print("Generating #{resource}...")
+  
+  glsl = File.open(path_to_file).read
+  data = "".tap do |data|
+    glsl.each_line do |line|
+      unless line =~ /^\/\/|^\s*$/
+        data << %[\n  "#{line.chomp}\\n"]
+      end
+    end
+  end
+  source = <<-EOF
+  //
+  //  #{name}.h
+  //  Aposelene
+  //
+  //  Copyright #{Date.today.year} Jason L Perry. All rights reserved.
+  //
+  
+  #ifndef _#{name}_h
+  #define _#{name}_h
+  
+  static const char *#{name} =#{data};
+  #endif
+  
   EOF
   File.open(resource, 'w') { |file| file.write(source) }
   print "OK\n"
