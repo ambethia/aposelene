@@ -8,14 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		BA0028FC14E26B3300BA62A5 /* libAposelene.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF38B5B14E2657A00859821 /* libAposelene.a */; };
-		BA00290E14E26D5A00BA62A5 /* demo.c in Sources */ = {isa = PBXBuildFile; fileRef = BAEADB2E14E269510080C5A0 /* demo.c */; };
 		BA9A1A4914E4F58100AB44C4 /* renderer.h in Headers */ = {isa = PBXBuildFile; fileRef = BA9A1A4814E4F58100AB44C4 /* renderer.h */; };
 		BA9A1A4B14E4F5BE00AB44C4 /* renderer.c in Sources */ = {isa = PBXBuildFile; fileRef = BA9A1A4A14E4F5BE00AB44C4 /* renderer.c */; };
 		BAA4BBEC14E2CEFB008A6342 /* texture.c in Sources */ = {isa = PBXBuildFile; fileRef = BAA4BBEB14E2CEFB008A6342 /* texture.c */; };
 		BAA4BBEF14E2CF22008A6342 /* texture.h in Headers */ = {isa = PBXBuildFile; fileRef = BAA4BBEE14E2CF22008A6342 /* texture.h */; };
 		BAAABAFD14E6431A001A14F4 /* sprite.c in Sources */ = {isa = PBXBuildFile; fileRef = BAAABAFC14E6431A001A14F4 /* sprite.c */; };
 		BAAABB0114E6542E001A14F4 /* sprite.h in Headers */ = {isa = PBXBuildFile; fileRef = BAAABAFF14E64332001A14F4 /* sprite.h */; };
-		BAAABB4714E82EB2001A14F4 /* template.txt in Resources */ = {isa = PBXBuildFile; fileRef = BAAABB4614E82EB2001A14F4 /* template.txt */; };
 		BAAABB4E14E87C04001A14F4 /* post_fragment_shader.h in Headers */ = {isa = PBXBuildFile; fileRef = BA9A1A4414E4B3CF00AB44C4 /* post_fragment_shader.h */; };
 		BAAABB4F14E87C04001A14F4 /* post_vertex_shader.h in Headers */ = {isa = PBXBuildFile; fileRef = BA9A1A4514E4B3CF00AB44C4 /* post_vertex_shader.h */; };
 		BAAABB5114E88146001A14F4 /* text.c in Sources */ = {isa = PBXBuildFile; fileRef = BAAABB5014E88146001A14F4 /* text.c */; };
@@ -47,7 +45,6 @@
 		BA9A1A4A14E4F5BE00AB44C4 /* renderer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = renderer.c; sourceTree = "<group>"; };
 		BAA4BBEB14E2CEFB008A6342 /* texture.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = texture.c; sourceTree = "<group>"; };
 		BAA4BBEE14E2CF22008A6342 /* texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = texture.h; sourceTree = "<group>"; };
-		BAA4BBF014E2D888008A6342 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		BAA4BBF514E32E7D008A6342 /* Gemfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Gemfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BAA4BBF614E32E7D008A6342 /* Rakefile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Rakefile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BAA4BBF814E332FB008A6342 /* manifest.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = manifest.yml; sourceTree = "<group>"; };
@@ -69,7 +66,11 @@
 		BAAABB5614E881AA001A14F4 /* text.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = text.h; sourceTree = "<group>"; };
 		BADB397414E8B97E00F25413 /* system_font.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = system_font.h; sourceTree = "<group>"; };
 		BADB397614E8BA8100F25413 /* system_font_texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = system_font_texture.h; sourceTree = "<group>"; };
-		BAEADB0B14E267C00080C5A0 /* Demo (Mac).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Demo (Mac).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAEAB52814E9BC11005A28F5 /* demo.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = demo.c; sourceTree = "<group>"; };
+		BAEAB52914E9BC11005A28F5 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		BAEAB52A14E9BC2B005A28F5 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		BAEAB52C14E9BC53005A28F5 /* demo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = demo.h; sourceTree = "<group>"; };
+		BAEADB0B14E267C00080C5A0 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEADB0E14E267C10080C5A0 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		BAEADB1114E267C10080C5A0 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		BAEADB1214E267C10080C5A0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -82,7 +83,6 @@
 		BAEADB2014E267C10080C5A0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BAEADB2114E267C10080C5A0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		BAEADB2414E267C10080C5A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		BAEADB2E14E269510080C5A0 /* demo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = demo.c; sourceTree = "<group>"; };
 		BAF38B5B14E2657A00859821 /* libAposelene.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAposelene.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAF38B6314E265EC00859821 /* aposelene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aposelene.h; sourceTree = "<group>"; };
 		BAF38B6414E265EC00859821 /* common.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = common.c; sourceTree = "<group>"; };
@@ -182,6 +182,26 @@
 			path = coin;
 			sourceTree = "<group>";
 		};
+		BAEAB52714E9B9F0005A28F5 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				BAEAB52D14E9BEE0005A28F5 /* glfw */,
+				BAEAB52814E9BC11005A28F5 /* demo.c */,
+				BAEADB1414E267C10080C5A0 /* Mac */,
+				BAEAB52C14E9BC53005A28F5 /* demo.h */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		BAEAB52D14E9BEE0005A28F5 /* glfw */ = {
+			isa = PBXGroup;
+			children = (
+				BAEAB52914E9BC11005A28F5 /* Makefile */,
+				BAEAB52A14E9BC2B005A28F5 /* main.c */,
+			);
+			path = glfw;
+			sourceTree = "<group>";
+		};
 		BAEADB0D14E267C00080C5A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,7 +222,7 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		BAEADB1414E267C10080C5A0 /* DemoMac */ = {
+		BAEADB1414E267C10080C5A0 /* Mac */ = {
 			isa = PBXGroup;
 			children = (
 				BAEADB2014E267C10080C5A0 /* AppDelegate.h */,
@@ -210,7 +230,7 @@
 				BAEADB2314E267C10080C5A0 /* MainMenu.xib */,
 				BAEADB1514E267C10080C5A0 /* Supporting Files */,
 			);
-			path = DemoMac;
+			path = Mac;
 			sourceTree = "<group>";
 		};
 		BAEADB1514E267C10080C5A0 /* Supporting Files */ = {
@@ -228,14 +248,12 @@
 		BAF38B5014E2657A00859821 = {
 			isa = PBXGroup;
 			children = (
+				BAEAB52714E9B9F0005A28F5 /* Demo */,
 				BAF38B6214E265EC00859821 /* Engine */,
 				BA00290014E26CB400BA62A5 /* Assets */,
 				BAA4BBF914E38581008A6342 /* Resources */,
 				BAA4BBF514E32E7D008A6342 /* Gemfile */,
 				BAA4BBF614E32E7D008A6342 /* Rakefile */,
-				BAA4BBF014E2D888008A6342 /* Makefile */,
-				BAEADB2E14E269510080C5A0 /* demo.c */,
-				BAEADB1414E267C10080C5A0 /* DemoMac */,
 				BAEADB0D14E267C00080C5A0 /* Frameworks */,
 				BAF38B5C14E2657A00859821 /* Products */,
 			);
@@ -245,7 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				BAF38B5B14E2657A00859821 /* libAposelene.a */,
-				BAEADB0B14E267C00080C5A0 /* Demo (Mac).app */,
+				BAEADB0B14E267C00080C5A0 /* Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -325,7 +343,7 @@
 			);
 			name = "Demo (Mac)";
 			productName = Demo;
-			productReference = BAEADB0B14E267C00080C5A0 /* Demo (Mac).app */;
+			productReference = BAEADB0B14E267C00080C5A0 /* Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
 		BAF38B5A14E2657A00859821 /* Aposelene */ = {
@@ -381,7 +399,6 @@
 				BAEADB1914E267C10080C5A0 /* InfoPlist.strings in Resources */,
 				BAEADB1F14E267C10080C5A0 /* Credits.rtf in Resources */,
 				BAEADB2514E267C10080C5A0 /* MainMenu.xib in Resources */,
-				BAAABB4714E82EB2001A14F4 /* template.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,7 +421,6 @@
 				BAF38B6B14E265EC00859821 /* common.c in Sources */,
 				BAF38B6D14E265EC00859821 /* font.c in Sources */,
 				BAF38B6F14E265EC00859821 /* utility.c in Sources */,
-				BA00290E14E26D5A00BA62A5 /* demo.c in Sources */,
 				BAA4BBEC14E2CEFB008A6342 /* texture.c in Sources */,
 				BA9A1A4B14E4F5BE00AB44C4 /* renderer.c in Sources */,
 				BAAABAFD14E6431A001A14F4 /* sprite.c in Sources */,
@@ -446,9 +462,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DemoMac/Demo-Prefix.pch";
-				INFOPLIST_FILE = "DemoMac/Demo-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Demo/Mac/Demo-Prefix.pch";
+				INFOPLIST_FILE = "Demo/Mac/Demo-Info.plist";
+				PRODUCT_NAME = Demo;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -457,9 +473,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DemoMac/Demo-Prefix.pch";
-				INFOPLIST_FILE = "DemoMac/Demo-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Demo/Mac/Demo-Prefix.pch";
+				INFOPLIST_FILE = "Demo/Mac/Demo-Info.plist";
+				PRODUCT_NAME = Demo;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

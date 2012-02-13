@@ -78,11 +78,11 @@ def dump_texture_resource(path_to_file, name = nil)
     yml.each do |anim|
       src = <<-EOF
 
-  static const ASSpriteAnimation _#{name}_#{anim["name"]}_animation = {
-    &#{name}_atlasData[0], #{anim["fps"]}, #{anim["frames"].size},
-    (int[#{anim["frames"].size}]){ #{anim["frames"].join(", ")} }
-  };
-  ASSpriteAnimation *#{name}_#{anim["name"]}_animation = (ASSpriteAnimation *)&_#{name}_#{anim["name"]}_animation;
+static const ASSpriteAnimation _#{name}_#{anim["name"]}_animation = {
+  &#{name}_atlasData[0], #{anim["fps"]}, #{anim["frames"].size},
+  (int[#{anim["frames"].size}]){ #{anim["frames"].join(", ")} }
+};
+ASSpriteAnimation *#{name}_#{anim["name"]}_animation = (ASSpriteAnimation *)&_#{name}_#{anim["name"]}_animation;
 
       EOF
       animations << src

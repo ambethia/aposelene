@@ -44,11 +44,11 @@ int coin_atlasData[] = {
   12, 16,
 };
 
-  static const ASSpriteAnimation _coin_spin_animation = {
-    &coin_atlasData[0], 9, 4,
-    (int[4]){ coin_1, coin_2, coin_3, coin_4 }
-  };
-  ASSpriteAnimation *coin_spin_animation = (ASSpriteAnimation *)&_coin_spin_animation;
+static const ASSpriteAnimation _coin_spin_animation = {
+  &coin_atlasData[0], 9, 4,
+  (int[4]){ coin_1, coin_2, coin_3, coin_4 }
+};
+ASSpriteAnimation *coin_spin_animation = (ASSpriteAnimation *)&_coin_spin_animation;
 
 
 static const ASTextureResource _coin_texture = {
