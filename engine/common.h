@@ -15,28 +15,28 @@ typedef struct ASVector2D {
   GLint y;
 } ASVector2D;
 
-inline ASVector2D ASVector2DMake(GLint x, GLint y);
+ASVector2D ASVector2DMake(GLint x, GLint y);
 
 typedef struct ASVector2Df {
   GLfloat x;
   GLfloat y;
 } ASVector2Df;
 
-inline ASVector2Df ASVector2DfMake(GLfloat x, GLfloat y);
+ASVector2Df ASVector2DfMake(GLfloat x, GLfloat y);
 
 typedef struct ASRect {
   ASVector2D origin;
   ASVector2D size;
 } ASRect;
 
-inline ASRect ASRectMake(GLint xOrigin, GLint yOrigin, GLint xSize, GLint ySize);
+ASRect ASRectMake(GLint xOrigin, GLint yOrigin, GLint xSize, GLint ySize);
 
 typedef struct ASRectf {
   ASVector2Df origin;
   ASVector2Df size;
 } ASRectf;
 
-inline ASRectf ASRectfMake(GLfloat xOrigin, GLfloat yOrigin, GLfloat xSize, GLfloat ySize);
+ASRectf ASRectfMake(GLfloat xOrigin, GLfloat yOrigin, GLfloat xSize, GLfloat ySize);
 
 typedef struct ASQuad {
   ASVector2D v0;
@@ -59,6 +59,6 @@ typedef struct ASColor {
   GLfloat alpha;
 } ASColor;
 
-inline ASColor ASColorMake(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
+ASColor ASColorMake(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
 
 #endif

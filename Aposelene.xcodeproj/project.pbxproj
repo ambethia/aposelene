@@ -18,6 +18,7 @@
 		BAAABB4F14E87C04001A14F4 /* post_vertex_shader.h in Headers */ = {isa = PBXBuildFile; fileRef = BA9A1A4514E4B3CF00AB44C4 /* post_vertex_shader.h */; };
 		BAAABB5114E88146001A14F4 /* text.c in Sources */ = {isa = PBXBuildFile; fileRef = BAAABB5014E88146001A14F4 /* text.c */; };
 		BAAABB5714E881AA001A14F4 /* text.h in Headers */ = {isa = PBXBuildFile; fileRef = BAAABB5614E881AA001A14F4 /* text.h */; };
+		BAEAB52E14E9C260005A28F5 /* demo.c in Sources */ = {isa = PBXBuildFile; fileRef = BAEAB52814E9BC11005A28F5 /* demo.c */; };
 		BAEADB0F14E267C10080C5A0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEADB0E14E267C10080C5A0 /* Cocoa.framework */; };
 		BAEADB1914E267C10080C5A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BAEADB1714E267C10080C5A0 /* InfoPlist.strings */; };
 		BAEADB1B14E267C10080C5A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BAEADB1A14E267C10080C5A0 /* main.m */; };
@@ -34,6 +35,16 @@
 		BAF38B7014E265EC00859821 /* utility.h in Headers */ = {isa = PBXBuildFile; fileRef = BAF38B6914E265EC00859821 /* utility.h */; };
 		BAF38B7214E2669700859821 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF38B7114E2669700859821 /* OpenGL.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BAEAB52F14E9C31F005A28F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BAF38B5214E2657A00859821 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BAF38B5A14E2657A00859821;
+			remoteInfo = Aposelene;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		BA00290214E26CB400BA62A5 /* system.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = system.fnt; sourceTree = "<group>"; };
@@ -68,7 +79,7 @@
 		BADB397614E8BA8100F25413 /* system_font_texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = system_font_texture.h; sourceTree = "<group>"; };
 		BAEAB52814E9BC11005A28F5 /* demo.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = demo.c; sourceTree = "<group>"; };
 		BAEAB52914E9BC11005A28F5 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		BAEAB52A14E9BC2B005A28F5 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		BAEAB52A14E9BC2B005A28F5 /* demo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = demo.c; sourceTree = "<group>"; };
 		BAEAB52C14E9BC53005A28F5 /* demo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = demo.h; sourceTree = "<group>"; };
 		BAEADB0B14E267C00080C5A0 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEADB0E14E267C10080C5A0 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -185,10 +196,10 @@
 		BAEAB52714E9B9F0005A28F5 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				BAEAB52D14E9BEE0005A28F5 /* glfw */,
 				BAEAB52814E9BC11005A28F5 /* demo.c */,
-				BAEADB1414E267C10080C5A0 /* Mac */,
 				BAEAB52C14E9BC53005A28F5 /* demo.h */,
+				BAEAB52D14E9BEE0005A28F5 /* glfw */,
+				BAEADB1414E267C10080C5A0 /* Mac */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -197,7 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				BAEAB52914E9BC11005A28F5 /* Makefile */,
-				BAEAB52A14E9BC2B005A28F5 /* main.c */,
+				BAEAB52A14E9BC2B005A28F5 /* demo.c */,
 			);
 			path = glfw;
 			sourceTree = "<group>";
@@ -313,16 +324,17 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXLegacyTarget section */
-		BAEADB2A14E268CB0080C5A0 /* demo */ = {
+		BAEADB2A14E268CB0080C5A0 /* Demo (glfw) */ = {
 			isa = PBXLegacyTarget;
 			buildArgumentsString = "$(ACTION)";
-			buildConfigurationList = BAEADB2B14E268CB0080C5A0 /* Build configuration list for PBXLegacyTarget "demo" */;
+			buildConfigurationList = BAEADB2B14E268CB0080C5A0 /* Build configuration list for PBXLegacyTarget "Demo (glfw)" */;
 			buildPhases = (
 			);
 			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = /Users/ambethia/Developer/Aposelene/Demo/glfw;
 			dependencies = (
 			);
-			name = demo;
+			name = "Demo (glfw)";
 			passBuildSettingsInEnvironment = 1;
 			productName = demo;
 		};
@@ -340,6 +352,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				BAEAB53014E9C31F005A28F5 /* PBXTargetDependency */,
 			);
 			name = "Demo (Mac)";
 			productName = Demo;
@@ -386,7 +399,7 @@
 			targets = (
 				BAF38B5A14E2657A00859821 /* Aposelene */,
 				BAEADB0A14E267C00080C5A0 /* Demo (Mac) */,
-				BAEADB2A14E268CB0080C5A0 /* demo */,
+				BAEADB2A14E268CB0080C5A0 /* Demo (glfw) */,
 			);
 		};
 /* End PBXProject section */
@@ -411,6 +424,7 @@
 			files = (
 				BAEADB1B14E267C10080C5A0 /* main.m in Sources */,
 				BAEADB2214E267C10080C5A0 /* AppDelegate.m in Sources */,
+				BAEAB52E14E9C260005A28F5 /* demo.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +443,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BAEAB53014E9C31F005A28F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BAF38B5A14E2657A00859821 /* Aposelene */;
+			targetProxy = BAEAB52F14E9C31F005A28F5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BAEADB1714E267C10080C5A0 /* InfoPlist.strings */ = {
@@ -574,7 +596,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BAEADB2B14E268CB0080C5A0 /* Build configuration list for PBXLegacyTarget "demo" */ = {
+		BAEADB2B14E268CB0080C5A0 /* Build configuration list for PBXLegacyTarget "Demo (glfw)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BAEADB2C14E268CB0080C5A0 /* Debug */,
