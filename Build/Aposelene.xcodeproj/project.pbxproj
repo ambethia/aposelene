@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		BA0028FC14E26B3300BA62A5 /* libAposelene.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF38B5B14E2657A00859821 /* libAposelene.a */; };
+		BA25296D14EAC02D00FBA932 /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC27A0314EAA329005D47E0 /* SDLMain.m */; };
+		BA39D5EC14EAABE100004AC6 /* libSDL-1.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BA39D5E614EAAB8400004AC6 /* libSDL-1.2.0.dylib */; };
+		BA39D5ED14EAABE400004AC6 /* libSDL_image-1.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BA39D5E714EAAB8400004AC6 /* libSDL_image-1.2.0.dylib */; };
+		BA39D5EE14EAABF900004AC6 /* libSDL_mixer-1.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BA39D5E814EAAB8400004AC6 /* libSDL_mixer-1.2.0.dylib */; };
 		BA9A1A4914E4F58100AB44C4 /* renderer.h in Headers */ = {isa = PBXBuildFile; fileRef = BA9A1A4814E4F58100AB44C4 /* renderer.h */; };
 		BA9A1A4B14E4F5BE00AB44C4 /* renderer.c in Sources */ = {isa = PBXBuildFile; fileRef = BA9A1A4A14E4F5BE00AB44C4 /* renderer.c */; };
 		BAA4BBEC14E2CEFB008A6342 /* texture.c in Sources */ = {isa = PBXBuildFile; fileRef = BAA4BBEB14E2CEFB008A6342 /* texture.c */; };
@@ -18,13 +22,11 @@
 		BAAABB4F14E87C04001A14F4 /* post_vertex_shader.h in Headers */ = {isa = PBXBuildFile; fileRef = BA9A1A4514E4B3CF00AB44C4 /* post_vertex_shader.h */; };
 		BAAABB5114E88146001A14F4 /* text.c in Sources */ = {isa = PBXBuildFile; fileRef = BAAABB5014E88146001A14F4 /* text.c */; };
 		BAAABB5714E881AA001A14F4 /* text.h in Headers */ = {isa = PBXBuildFile; fileRef = BAAABB5614E881AA001A14F4 /* text.h */; };
-		BAEAB52E14E9C260005A28F5 /* demo.c in Sources */ = {isa = PBXBuildFile; fileRef = BAEAB52814E9BC11005A28F5 /* demo.c */; };
+		BAC27A0414EAA329005D47E0 /* SDLMain.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC27A0214EAA329005D47E0 /* SDLMain.h */; };
 		BAEADB0F14E267C10080C5A0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEADB0E14E267C10080C5A0 /* Cocoa.framework */; };
 		BAEADB1914E267C10080C5A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BAEADB1714E267C10080C5A0 /* InfoPlist.strings */; };
-		BAEADB1B14E267C10080C5A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BAEADB1A14E267C10080C5A0 /* main.m */; };
+		BAEADB1B14E267C10080C5A0 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = BAEADB1A14E267C10080C5A0 /* main.c */; };
 		BAEADB1F14E267C10080C5A0 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = BAEADB1D14E267C10080C5A0 /* Credits.rtf */; };
-		BAEADB2214E267C10080C5A0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BAEADB2114E267C10080C5A0 /* AppDelegate.m */; };
-		BAEADB2514E267C10080C5A0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAEADB2314E267C10080C5A0 /* MainMenu.xib */; };
 		BAEADB3614E26A220080C5A0 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF38B7114E2669700859821 /* OpenGL.framework */; };
 		BAF38B6A14E265EC00859821 /* aposelene.h in Headers */ = {isa = PBXBuildFile; fileRef = BAF38B6314E265EC00859821 /* aposelene.h */; };
 		BAF38B6B14E265EC00859821 /* common.c in Sources */ = {isa = PBXBuildFile; fileRef = BAF38B6414E265EC00859821 /* common.c */; };
@@ -50,14 +52,17 @@
 		BA00290214E26CB400BA62A5 /* system.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = system.fnt; sourceTree = "<group>"; };
 		BA00290514E26CB400BA62A5 /* post_fragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = post_fragment.glsl; sourceTree = "<group>"; };
 		BA00290614E26CB400BA62A5 /* post_vertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = post_vertex.glsl; sourceTree = "<group>"; };
+		BA39D5E614EAAB8400004AC6 /* libSDL-1.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL-1.2.0.dylib"; path = "usr/local/lib/libSDL-1.2.0.dylib"; sourceTree = SDKROOT; };
+		BA39D5E714EAAB8400004AC6 /* libSDL_image-1.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL_image-1.2.0.dylib"; path = "usr/local/lib/libSDL_image-1.2.0.dylib"; sourceTree = SDKROOT; };
+		BA39D5E814EAAB8400004AC6 /* libSDL_mixer-1.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL_mixer-1.2.0.dylib"; path = "usr/local/lib/libSDL_mixer-1.2.0.dylib"; sourceTree = SDKROOT; };
 		BA9A1A4414E4B3CF00AB44C4 /* post_fragment_shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = post_fragment_shader.h; sourceTree = "<group>"; };
 		BA9A1A4514E4B3CF00AB44C4 /* post_vertex_shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = post_vertex_shader.h; sourceTree = "<group>"; };
 		BA9A1A4814E4F58100AB44C4 /* renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = renderer.h; sourceTree = "<group>"; };
 		BA9A1A4A14E4F5BE00AB44C4 /* renderer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = renderer.c; sourceTree = "<group>"; };
 		BAA4BBEB14E2CEFB008A6342 /* texture.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = texture.c; sourceTree = "<group>"; };
 		BAA4BBEE14E2CF22008A6342 /* texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = texture.h; sourceTree = "<group>"; };
-		BAA4BBF514E32E7D008A6342 /* Gemfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Gemfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		BAA4BBF614E32E7D008A6342 /* Rakefile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Rakefile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BAA4BBF514E32E7D008A6342 /* Gemfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Gemfile; path = ../Gemfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BAA4BBF614E32E7D008A6342 /* Rakefile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Rakefile; path = ../Rakefile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BAA4BBF814E332FB008A6342 /* manifest.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = manifest.yml; sourceTree = "<group>"; };
 		BAAABAFC14E6431A001A14F4 /* sprite.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sprite.c; sourceTree = "<group>"; };
 		BAAABAFF14E64332001A14F4 /* sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sprite.h; sourceTree = "<group>"; };
@@ -75,25 +80,17 @@
 		BAAABB4D14E87BC4001A14F4 /* system.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = system.png; sourceTree = "<group>"; };
 		BAAABB5014E88146001A14F4 /* text.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = text.c; sourceTree = "<group>"; };
 		BAAABB5614E881AA001A14F4 /* text.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = text.h; sourceTree = "<group>"; };
+		BAC27A0214EAA329005D47E0 /* SDLMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDLMain.h; sourceTree = "<group>"; };
+		BAC27A0314EAA329005D47E0 /* SDLMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDLMain.m; sourceTree = "<group>"; };
 		BADB397414E8B97E00F25413 /* system_font.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = system_font.h; sourceTree = "<group>"; };
 		BADB397614E8BA8100F25413 /* system_font_texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = system_font_texture.h; sourceTree = "<group>"; };
-		BAEAB52814E9BC11005A28F5 /* demo.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = demo.c; sourceTree = "<group>"; };
-		BAEAB52914E9BC11005A28F5 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		BAEAB52A14E9BC2B005A28F5 /* demo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = demo.c; sourceTree = "<group>"; };
-		BAEAB52C14E9BC53005A28F5 /* demo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = demo.h; sourceTree = "<group>"; };
-		BAEADB0B14E267C00080C5A0 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAEADB0B14E267C00080C5A0 /* Aposelene Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aposelene Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEADB0E14E267C10080C5A0 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		BAEADB1114E267C10080C5A0 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		BAEADB1214E267C10080C5A0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		BAEADB1314E267C10080C5A0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BAEADB1614E267C10080C5A0 /* Demo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Demo-Info.plist"; sourceTree = "<group>"; };
 		BAEADB1814E267C10080C5A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		BAEADB1A14E267C10080C5A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BAEADB1A14E267C10080C5A0 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		BAEADB1C14E267C10080C5A0 /* Demo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Demo-Prefix.pch"; sourceTree = "<group>"; };
 		BAEADB1E14E267C10080C5A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		BAEADB2014E267C10080C5A0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		BAEADB2114E267C10080C5A0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		BAEADB2414E267C10080C5A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		BAF38B5B14E2657A00859821 /* libAposelene.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAposelene.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAF38B6314E265EC00859821 /* aposelene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aposelene.h; sourceTree = "<group>"; };
 		BAF38B6414E265EC00859821 /* common.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = common.c; sourceTree = "<group>"; };
@@ -113,6 +110,9 @@
 				BA0028FC14E26B3300BA62A5 /* libAposelene.a in Frameworks */,
 				BAEADB0F14E267C10080C5A0 /* Cocoa.framework in Frameworks */,
 				BAEADB3614E26A220080C5A0 /* OpenGL.framework in Frameworks */,
+				BA39D5EC14EAABE100004AC6 /* libSDL-1.2.0.dylib in Frameworks */,
+				BA39D5ED14EAABE400004AC6 /* libSDL_image-1.2.0.dylib in Frameworks */,
+				BA39D5EE14EAABF900004AC6 /* libSDL_mixer-1.2.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +136,8 @@
 				BA00290714E26CB400BA62A5 /* Textures */,
 				BAA4BBF814E332FB008A6342 /* manifest.yml */,
 			);
-			path = Assets;
+			name = Assets;
+			path = ../Assets;
 			sourceTree = "<group>";
 		};
 		BA00290114E26CB400BA62A5 /* Fonts */ = {
@@ -179,7 +180,8 @@
 				BA9A1A4414E4B3CF00AB44C4 /* post_fragment_shader.h */,
 				BA9A1A4514E4B3CF00AB44C4 /* post_vertex_shader.h */,
 			);
-			path = Resources;
+			name = Resources;
+			path = ../Resources;
 			sourceTree = "<group>";
 		};
 		BAAABB3114E82C56001A14F4 /* coin */ = {
@@ -193,96 +195,9 @@
 			path = coin;
 			sourceTree = "<group>";
 		};
-		BAEAB52714E9B9F0005A28F5 /* Demo */ = {
+		BACEF97A14EAA15000806C67 /* aposelene */ = {
 			isa = PBXGroup;
 			children = (
-				BAEAB52814E9BC11005A28F5 /* demo.c */,
-				BAEAB52C14E9BC53005A28F5 /* demo.h */,
-				BAEAB52D14E9BEE0005A28F5 /* glfw */,
-				BAEADB1414E267C10080C5A0 /* Mac */,
-			);
-			path = Demo;
-			sourceTree = "<group>";
-		};
-		BAEAB52D14E9BEE0005A28F5 /* glfw */ = {
-			isa = PBXGroup;
-			children = (
-				BAEAB52914E9BC11005A28F5 /* Makefile */,
-				BAEAB52A14E9BC2B005A28F5 /* demo.c */,
-			);
-			path = glfw;
-			sourceTree = "<group>";
-		};
-		BAEADB0D14E267C00080C5A0 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				BAF38B7114E2669700859821 /* OpenGL.framework */,
-				BAEADB0E14E267C10080C5A0 /* Cocoa.framework */,
-				BAEADB1014E267C10080C5A0 /* Other Frameworks */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		BAEADB1014E267C10080C5A0 /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				BAEADB1114E267C10080C5A0 /* AppKit.framework */,
-				BAEADB1214E267C10080C5A0 /* CoreData.framework */,
-				BAEADB1314E267C10080C5A0 /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
-		BAEADB1414E267C10080C5A0 /* Mac */ = {
-			isa = PBXGroup;
-			children = (
-				BAEADB2014E267C10080C5A0 /* AppDelegate.h */,
-				BAEADB2114E267C10080C5A0 /* AppDelegate.m */,
-				BAEADB2314E267C10080C5A0 /* MainMenu.xib */,
-				BAEADB1514E267C10080C5A0 /* Supporting Files */,
-			);
-			path = Mac;
-			sourceTree = "<group>";
-		};
-		BAEADB1514E267C10080C5A0 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				BAEADB1614E267C10080C5A0 /* Demo-Info.plist */,
-				BAEADB1714E267C10080C5A0 /* InfoPlist.strings */,
-				BAEADB1A14E267C10080C5A0 /* main.m */,
-				BAEADB1C14E267C10080C5A0 /* Demo-Prefix.pch */,
-				BAEADB1D14E267C10080C5A0 /* Credits.rtf */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		BAF38B5014E2657A00859821 = {
-			isa = PBXGroup;
-			children = (
-				BAEAB52714E9B9F0005A28F5 /* Demo */,
-				BAF38B6214E265EC00859821 /* Engine */,
-				BA00290014E26CB400BA62A5 /* Assets */,
-				BAA4BBF914E38581008A6342 /* Resources */,
-				BAA4BBF514E32E7D008A6342 /* Gemfile */,
-				BAA4BBF614E32E7D008A6342 /* Rakefile */,
-				BAEADB0D14E267C00080C5A0 /* Frameworks */,
-				BAF38B5C14E2657A00859821 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		BAF38B5C14E2657A00859821 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				BAF38B5B14E2657A00859821 /* libAposelene.a */,
-				BAEADB0B14E267C00080C5A0 /* Demo.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		BAF38B6214E265EC00859821 /* Engine */ = {
-			isa = PBXGroup;
-			children = (
-				BAF38B6314E265EC00859821 /* aposelene.h */,
 				BAF38B6414E265EC00859821 /* common.c */,
 				BAF38B6514E265EC00859821 /* common.h */,
 				BAF38B6614E265EC00859821 /* font.c */,
@@ -298,7 +213,83 @@
 				BAAABB5014E88146001A14F4 /* text.c */,
 				BAAABB5614E881AA001A14F4 /* text.h */,
 			);
-			path = Engine;
+			path = aposelene;
+			sourceTree = "<group>";
+		};
+		BAEAB52714E9B9F0005A28F5 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				BAEADB1414E267C10080C5A0 /* Mac */,
+			);
+			name = Demo;
+			path = ../Demo;
+			sourceTree = "<group>";
+		};
+		BAEADB0D14E267C00080C5A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BAF38B7114E2669700859821 /* OpenGL.framework */,
+				BAEADB0E14E267C10080C5A0 /* Cocoa.framework */,
+				BA39D5E614EAAB8400004AC6 /* libSDL-1.2.0.dylib */,
+				BA39D5E714EAAB8400004AC6 /* libSDL_image-1.2.0.dylib */,
+				BA39D5E814EAAB8400004AC6 /* libSDL_mixer-1.2.0.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BAEADB1414E267C10080C5A0 /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				BAEADB1A14E267C10080C5A0 /* main.c */,
+				BAEADB1514E267C10080C5A0 /* Supporting Files */,
+			);
+			path = Mac;
+			sourceTree = "<group>";
+		};
+		BAEADB1514E267C10080C5A0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BAC27A0214EAA329005D47E0 /* SDLMain.h */,
+				BAC27A0314EAA329005D47E0 /* SDLMain.m */,
+				BAEADB1614E267C10080C5A0 /* Demo-Info.plist */,
+				BAEADB1714E267C10080C5A0 /* InfoPlist.strings */,
+				BAEADB1C14E267C10080C5A0 /* Demo-Prefix.pch */,
+				BAEADB1D14E267C10080C5A0 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BAF38B5014E2657A00859821 = {
+			isa = PBXGroup;
+			children = (
+				BAF38B6214E265EC00859821 /* Engine */,
+				BAEAB52714E9B9F0005A28F5 /* Demo */,
+				BA00290014E26CB400BA62A5 /* Assets */,
+				BAA4BBF914E38581008A6342 /* Resources */,
+				BAA4BBF514E32E7D008A6342 /* Gemfile */,
+				BAA4BBF614E32E7D008A6342 /* Rakefile */,
+				BAEADB0D14E267C00080C5A0 /* Frameworks */,
+				BAF38B5C14E2657A00859821 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BAF38B5C14E2657A00859821 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BAF38B5B14E2657A00859821 /* libAposelene.a */,
+				BAEADB0B14E267C00080C5A0 /* Aposelene Demo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BAF38B6214E265EC00859821 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				BACEF97A14EAA15000806C67 /* aposelene */,
+				BAF38B6314E265EC00859821 /* aposelene.h */,
+			);
+			name = Engine;
+			path = ../Engine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,6 +309,7 @@
 				BAAABB4E14E87C04001A14F4 /* post_fragment_shader.h in Headers */,
 				BAAABB4F14E87C04001A14F4 /* post_vertex_shader.h in Headers */,
 				BAAABB5714E881AA001A14F4 /* text.h in Headers */,
+				BAC27A0414EAA329005D47E0 /* SDLMain.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,7 +348,7 @@
 			);
 			name = "Demo (Mac)";
 			productName = Demo;
-			productReference = BAEADB0B14E267C00080C5A0 /* Demo.app */;
+			productReference = BAEADB0B14E267C00080C5A0 /* Aposelene Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
 		BAF38B5A14E2657A00859821 /* Aposelene */ = {
@@ -411,7 +403,6 @@
 			files = (
 				BAEADB1914E267C10080C5A0 /* InfoPlist.strings in Resources */,
 				BAEADB1F14E267C10080C5A0 /* Credits.rtf in Resources */,
-				BAEADB2514E267C10080C5A0 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,9 +413,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAEADB1B14E267C10080C5A0 /* main.m in Sources */,
-				BAEADB2214E267C10080C5A0 /* AppDelegate.m in Sources */,
-				BAEAB52E14E9C260005A28F5 /* demo.c in Sources */,
+				BA25296D14EAC02D00FBA932 /* SDLMain.m in Sources */,
+				BAEADB1B14E267C10080C5A0 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,14 +459,6 @@
 			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
-		BAEADB2314E267C10080C5A0 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BAEADB2414E267C10080C5A0 /* en */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -484,9 +466,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Demo/Mac/Demo-Prefix.pch";
-				INFOPLIST_FILE = "Demo/Mac/Demo-Info.plist";
-				PRODUCT_NAME = Demo;
+				GCC_PREFIX_HEADER = "../Demo/Mac/Demo-Prefix.pch";
+				INFOPLIST_FILE = "../Demo/Mac/Demo-Info.plist";
+				PRODUCT_NAME = "Aposelene Demo";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -495,9 +477,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Demo/Mac/Demo-Prefix.pch";
-				INFOPLIST_FILE = "Demo/Mac/Demo-Info.plist";
-				PRODUCT_NAME = Demo;
+				GCC_PREFIX_HEADER = "../Demo/Mac/Demo-Prefix.pch";
+				INFOPLIST_FILE = "../Demo/Mac/Demo-Info.plist";
+				PRODUCT_NAME = "Aposelene Demo";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -543,7 +525,8 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				HEADER_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -563,7 +546,8 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				HEADER_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -572,6 +556,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -580,6 +566,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

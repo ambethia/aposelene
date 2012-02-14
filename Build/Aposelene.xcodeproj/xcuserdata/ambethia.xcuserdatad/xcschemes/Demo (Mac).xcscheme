@@ -14,7 +14,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BAEADB0A14E267C00080C5A0"
-               BuildableName = "Demo.app"
+               BuildableName = "Aposelene Demo.app"
                BlueprintName = "Demo (Mac)"
                ReferencedContainer = "container:Aposelene.xcodeproj">
             </BuildableReference>
@@ -32,7 +32,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BAEADB0A14E267C00080C5A0"
-            BuildableName = "Demo.app"
+            BuildableName = "Aposelene Demo.app"
             BlueprintName = "Demo (Mac)"
             ReferencedContainer = "container:Aposelene.xcodeproj">
          </BuildableReference>
@@ -50,7 +50,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BAEADB0A14E267C00080C5A0"
-            BuildableName = "Demo.app"
+            BuildableName = "Aposelene Demo.app"
             BlueprintName = "Demo (Mac)"
             ReferencedContainer = "container:Aposelene.xcodeproj">
          </BuildableReference>
@@ -68,7 +68,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BAEADB0A14E267C00080C5A0"
-            BuildableName = "Demo.app"
+            BuildableName = "Aposelene Demo.app"
             BlueprintName = "Demo (Mac)"
             ReferencedContainer = "container:Aposelene.xcodeproj">
          </BuildableReference>

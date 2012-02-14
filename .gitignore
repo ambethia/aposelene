@@ -1,8 +1,5 @@
-demo
-test
 *.dSYM
 *.o
 *.xcuserstate
-Aposelene.xcodeproj/project.xcworkspace/xcuserdata/
-Build/*
+*.xcodeproj/project.xcworkspace/xcuserdata/
 *.xcbkptlist
