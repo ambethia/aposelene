@@ -8,11 +8,10 @@
 #ifndef _aposelene_h
 #define _aposelene_h
 
+#include <SDL/SDL.h>
+
 #include <OpenGL/OpenGL.h>
-
-#include <SDL.h>
-#include <SDL_image.h>
-
+ 
 #include "aposelene/common.h"
 #include "aposelene/font.h"
 #include "aposelene/renderer.h"

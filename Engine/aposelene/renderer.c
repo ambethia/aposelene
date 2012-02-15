@@ -6,7 +6,7 @@
 //
 
 #include <stdio.h>
-#include <SDL.h>
+#include <SDL/SDL.h>
 
 #include "renderer.h"
 #include "common.h"
@@ -32,7 +32,8 @@ static struct {
   GLuint postVertexAttribute;
   GLuint fboTextureUniform;
   GLuint screenSizeUniform;
-  SDL_Surface* drawContext;
+  SDL_Window *window;
+  SDL_GLContext context;
   SDL_TimerID timer;
   int lastTime;
   int thisTime;
@@ -64,20 +65,28 @@ void asInit(int width, int height, int scale, void (*initCallback)(void), void (
   asInitCallback(initCallback);
   asUpdateCallback(updateCallback);
   
-  int error;
-  error = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
-  if( error == -1 )
-    printf("Failed to initialize SDL");
+  if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER) < 0)
+    printf("Could not initialize SDL: %s", SDL_GetError());
   
+  SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
+  SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
   SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-  SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 16);
+  SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
   SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
   SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
   SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
   SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8);
 
-  renderer.videoModeFlags = SDL_OPENGL;
-  renderer.drawContext = SDL_SetVideoMode(width * scale, height * scale, SCREEN_BPP, renderer.videoModeFlags);
+  renderer.window = SDL_CreateWindow("",
+    SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+    width * scale, height * scale,
+    SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+  if (!renderer.window)
+    printf("Unable to create window: %s", SDL_GetError());
+  
+  renderer.context = SDL_GL_CreateContext(renderer.window);
+  SDL_GL_SetSwapInterval(1);
+
   asReshape(width * scale, height * scale);
   
   glClearColor(0.2f, 0.2f, 0.2f, 0.0f);
@@ -159,7 +168,7 @@ static void asGameLoop(void)
   renderer.deltaTime = (float)(renderer.thisTime - renderer.lastTime)/1000.0f;
   renderer.lastTime = renderer.thisTime;
   asRender(renderer.deltaTime, renderer.elapsedTime);
-  SDL_GL_SwapBuffers();
+  SDL_GL_SwapWindow(renderer.window);
   renderer.elapsedTime += renderer.deltaTime;
 }
 
@@ -182,8 +191,9 @@ void asMain(void)
           if (event.user.code == RUN_GAME_LOOP)
             asGameLoop();
           break;
-        case SDL_VIDEORESIZE:
-          asReshape(event.resize.w, event.resize.h);
+        case SDL_WINDOWEVENT:
+          if (event.window.event == SDL_WINDOWEVENT_RESIZED)
+            asReshape(event.window.data1, event.window.data2);
           break;
         case SDL_QUIT:
           running = GL_FALSE;
@@ -246,8 +256,6 @@ void asReshape(int width, int height) {
   
   renderer.position.x = (width - renderer.clip.x) / 2;
   renderer.position.y = (height - renderer.clip.y) / 2;
-
-  printf("%dx%d, %dx%d, %dx%d\n", width, height, renderer.position.x, renderer.position.y, renderer.clip.x, renderer.clip.y);
   
   glScissor(renderer.position.x, renderer.position.y, renderer.clip.x, renderer.clip.y);
 }
@@ -259,5 +267,7 @@ void asTerminate(void)
   glDeleteFramebuffers(1, &renderer.fbo);
   glDeleteBuffers(1, &renderer.fboVertices);
   glDeleteProgram(renderer.postShaderProgram);
+  SDL_GL_DeleteContext(renderer.context);
+  SDL_DestroyWindow(renderer.window);
   SDL_Quit();
 }

@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		BA0028FC14E26B3300BA62A5 /* libAposelene.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF38B5B14E2657A00859821 /* libAposelene.a */; };
-		BA25296D14EAC02D00FBA932 /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC27A0314EAA329005D47E0 /* SDLMain.m */; };
-		BA30A3E314EB24150023F68E /* libSDL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA30A3E214EB24150023F68E /* libSDL.a */; };
 		BA30A3FD14EB24D90023F68E /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA30A3FC14EB24D90023F68E /* IOKit.framework */; };
 		BA30A40114EB24FF0023F68E /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA30A40014EB24FF0023F68E /* AudioUnit.framework */; };
 		BA30A40D14EB25C00023F68E /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA30A40C14EB25C00023F68E /* Carbon.framework */; };
@@ -23,7 +21,6 @@
 		BAAABB4F14E87C04001A14F4 /* post_vertex_shader.h in Headers */ = {isa = PBXBuildFile; fileRef = BA9A1A4514E4B3CF00AB44C4 /* post_vertex_shader.h */; };
 		BAAABB5114E88146001A14F4 /* text.c in Sources */ = {isa = PBXBuildFile; fileRef = BAAABB5014E88146001A14F4 /* text.c */; };
 		BAAABB5714E881AA001A14F4 /* text.h in Headers */ = {isa = PBXBuildFile; fileRef = BAAABB5614E881AA001A14F4 /* text.h */; };
-		BAC27A0414EAA329005D47E0 /* SDLMain.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC27A0214EAA329005D47E0 /* SDLMain.h */; };
 		BAE0D6FB14EAFE5B008ADD22 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = BAE0D6FA14EAFE5B008ADD22 /* Icon.icns */; };
 		BAEADB0F14E267C10080C5A0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEADB0E14E267C10080C5A0 /* Cocoa.framework */; };
 		BAEADB1914E267C10080C5A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BAEADB1714E267C10080C5A0 /* InfoPlist.strings */; };
@@ -38,6 +35,9 @@
 		BAF38B6F14E265EC00859821 /* utility.c in Sources */ = {isa = PBXBuildFile; fileRef = BAF38B6814E265EC00859821 /* utility.c */; };
 		BAF38B7014E265EC00859821 /* utility.h in Headers */ = {isa = PBXBuildFile; fileRef = BAF38B6914E265EC00859821 /* utility.h */; };
 		BAF38B7214E2669700859821 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF38B7114E2669700859821 /* OpenGL.framework */; };
+		BAF6620514EB58FA00892BE5 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF6620414EB58FA00892BE5 /* libSDL2.a */; };
+		BAF6620714EB596000892BE5 /* ForceFeedback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF6620614EB596000892BE5 /* ForceFeedback.framework */; };
+		BAF6620914EB597C00892BE5 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF6620814EB597C00892BE5 /* CoreAudio.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +66,6 @@
 		BA00290214E26CB400BA62A5 /* system.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = system.fnt; sourceTree = "<group>"; };
 		BA00290514E26CB400BA62A5 /* post_fragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = post_fragment.glsl; sourceTree = "<group>"; };
 		BA00290614E26CB400BA62A5 /* post_vertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = post_vertex.glsl; sourceTree = "<group>"; };
-		BA30A3E214EB24150023F68E /* libSDL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL.a; path = "../Ext/sdl-static/lib/Mac/libSDL.a"; sourceTree = "<group>"; };
 		BA30A3FC14EB24D90023F68E /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		BA30A40014EB24FF0023F68E /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		BA30A40C14EB25C00023F68E /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
@@ -95,8 +94,6 @@
 		BAAABB4D14E87BC4001A14F4 /* system.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = system.png; sourceTree = "<group>"; };
 		BAAABB5014E88146001A14F4 /* text.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = text.c; sourceTree = "<group>"; };
 		BAAABB5614E881AA001A14F4 /* text.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = text.h; sourceTree = "<group>"; };
-		BAC27A0214EAA329005D47E0 /* SDLMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDLMain.h; sourceTree = "<group>"; };
-		BAC27A0314EAA329005D47E0 /* SDLMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDLMain.m; sourceTree = "<group>"; };
 		BADB397414E8B97E00F25413 /* system_font.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = system_font.h; sourceTree = "<group>"; };
 		BADB397614E8BA8100F25413 /* system_font_texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = system_font_texture.h; sourceTree = "<group>"; };
 		BAE0D6FA14EAFE5B008ADD22 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
@@ -116,6 +113,9 @@
 		BAF38B6814E265EC00859821 /* utility.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = utility.c; sourceTree = "<group>"; };
 		BAF38B6914E265EC00859821 /* utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utility.h; sourceTree = "<group>"; };
 		BAF38B7114E2669700859821 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		BAF6620414EB58FA00892BE5 /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = ../Ext/lib/darwin/libSDL2.a; sourceTree = "<group>"; };
+		BAF6620614EB596000892BE5 /* ForceFeedback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ForceFeedback.framework; path = System/Library/Frameworks/ForceFeedback.framework; sourceTree = SDKROOT; };
+		BAF6620814EB597C00892BE5 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,13 +123,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAF6620914EB597C00892BE5 /* CoreAudio.framework in Frameworks */,
 				BAEADB0F14E267C10080C5A0 /* Cocoa.framework in Frameworks */,
 				BAEADB3614E26A220080C5A0 /* OpenGL.framework in Frameworks */,
 				BA30A40D14EB25C00023F68E /* Carbon.framework in Frameworks */,
 				BA30A40114EB24FF0023F68E /* AudioUnit.framework in Frameworks */,
 				BA30A3FD14EB24D90023F68E /* IOKit.framework in Frameworks */,
+				BAF6620714EB596000892BE5 /* ForceFeedback.framework in Frameworks */,
 				BA0028FC14E26B3300BA62A5 /* libAposelene.a in Frameworks */,
-				BA30A3E314EB24150023F68E /* libSDL.a in Frameworks */,
+				BAF6620514EB58FA00892BE5 /* libSDL2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,12 +217,14 @@
 		BACAB73C14EB083500EC1DEE /* Mac */ = {
 			isa = PBXGroup;
 			children = (
+				BAF6620414EB58FA00892BE5 /* libSDL2.a */,
 				BAEADB0E14E267C10080C5A0 /* Cocoa.framework */,
 				BAF38B7114E2669700859821 /* OpenGL.framework */,
 				BA30A40C14EB25C00023F68E /* Carbon.framework */,
 				BA30A40014EB24FF0023F68E /* AudioUnit.framework */,
 				BA30A3FC14EB24D90023F68E /* IOKit.framework */,
-				BA30A3E214EB24150023F68E /* libSDL.a */,
+				BAF6620814EB597C00892BE5 /* CoreAudio.framework */,
+				BAF6620614EB596000892BE5 /* ForceFeedback.framework */,
 			);
 			name = Mac;
 			sourceTree = "<group>";
@@ -276,8 +280,6 @@
 			isa = PBXGroup;
 			children = (
 				BAE0D6FA14EAFE5B008ADD22 /* Icon.icns */,
-				BAC27A0214EAA329005D47E0 /* SDLMain.h */,
-				BAC27A0314EAA329005D47E0 /* SDLMain.m */,
 				BAEADB1614E267C10080C5A0 /* Demo-Info.plist */,
 				BAEADB1714E267C10080C5A0 /* InfoPlist.strings */,
 				BAEADB1C14E267C10080C5A0 /* Demo-Prefix.pch */,
@@ -336,7 +338,6 @@
 				BAAABB4E14E87C04001A14F4 /* post_fragment_shader.h in Headers */,
 				BAAABB4F14E87C04001A14F4 /* post_vertex_shader.h in Headers */,
 				BAAABB5714E881AA001A14F4 /* text.h in Headers */,
-				BAC27A0414EAA329005D47E0 /* SDLMain.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,7 +425,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA25296D14EAC02D00FBA932 /* SDLMain.m in Sources */,
 				BAEADB1B14E267C10080C5A0 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,7 +479,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "../Demo/Mac/Demo-Prefix.pch";
 				INFOPLIST_FILE = "../Demo/Mac/Demo-Info.plist";
-				LIBRARY_SEARCH_PATHS = "${SOURCE_ROOT}/../Ext/sdl-static/lib/Mac";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Ext/lib/darwin\"",
+				);
 				PRODUCT_NAME = "Aposelene Demo";
 				WRAPPER_EXTENSION = app;
 			};
@@ -491,7 +494,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "../Demo/Mac/Demo-Prefix.pch";
 				INFOPLIST_FILE = "../Demo/Mac/Demo-Info.plist";
-				LIBRARY_SEARCH_PATHS = "${SOURCE_ROOT}/../Ext/sdl-static/lib/Mac";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Ext/lib/darwin\"",
+				);
 				PRODUCT_NAME = "Aposelene Demo";
 				WRAPPER_EXTENSION = app;
 			};
@@ -517,10 +523,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"${SOURCE_ROOT}/../Ext/sdl-static/include/SDL12",
-					"${SOURCE_ROOT}/../Ext/sdl-static/include",
-				);
+				HEADER_SEARCH_PATHS = "${SOURCE_ROOT}/../Ext/include";
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				ONLY_ACTIVE_ARCH = YES;
@@ -542,10 +545,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"${SOURCE_ROOT}/../Ext/sdl-static/include/SDL12",
-					"${SOURCE_ROOT}/../Ext/sdl-static/include",
-				);
+				HEADER_SEARCH_PATHS = "${SOURCE_ROOT}/../Ext/include";
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				SDKROOT = macosx;
