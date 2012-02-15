@@ -9,9 +9,10 @@
 /* Begin PBXBuildFile section */
 		BA0028FC14E26B3300BA62A5 /* libAposelene.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF38B5B14E2657A00859821 /* libAposelene.a */; };
 		BA25296D14EAC02D00FBA932 /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC27A0314EAA329005D47E0 /* SDLMain.m */; };
-		BA39D5EC14EAABE100004AC6 /* libSDL-1.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BA39D5E614EAAB8400004AC6 /* libSDL-1.2.0.dylib */; };
-		BA39D5ED14EAABE400004AC6 /* libSDL_image-1.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BA39D5E714EAAB8400004AC6 /* libSDL_image-1.2.0.dylib */; };
-		BA39D5EE14EAABF900004AC6 /* libSDL_mixer-1.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BA39D5E814EAAB8400004AC6 /* libSDL_mixer-1.2.0.dylib */; };
+		BA30A3E314EB24150023F68E /* libSDL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA30A3E214EB24150023F68E /* libSDL.a */; };
+		BA30A3FD14EB24D90023F68E /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA30A3FC14EB24D90023F68E /* IOKit.framework */; };
+		BA30A40114EB24FF0023F68E /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA30A40014EB24FF0023F68E /* AudioUnit.framework */; };
+		BA30A40D14EB25C00023F68E /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA30A40C14EB25C00023F68E /* Carbon.framework */; };
 		BA9A1A4914E4F58100AB44C4 /* renderer.h in Headers */ = {isa = PBXBuildFile; fileRef = BA9A1A4814E4F58100AB44C4 /* renderer.h */; };
 		BA9A1A4B14E4F5BE00AB44C4 /* renderer.c in Sources */ = {isa = PBXBuildFile; fileRef = BA9A1A4A14E4F5BE00AB44C4 /* renderer.c */; };
 		BAA4BBEC14E2CEFB008A6342 /* texture.c in Sources */ = {isa = PBXBuildFile; fileRef = BAA4BBEB14E2CEFB008A6342 /* texture.c */; };
@@ -23,6 +24,7 @@
 		BAAABB5114E88146001A14F4 /* text.c in Sources */ = {isa = PBXBuildFile; fileRef = BAAABB5014E88146001A14F4 /* text.c */; };
 		BAAABB5714E881AA001A14F4 /* text.h in Headers */ = {isa = PBXBuildFile; fileRef = BAAABB5614E881AA001A14F4 /* text.h */; };
 		BAC27A0414EAA329005D47E0 /* SDLMain.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC27A0214EAA329005D47E0 /* SDLMain.h */; };
+		BAE0D6FB14EAFE5B008ADD22 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = BAE0D6FA14EAFE5B008ADD22 /* Icon.icns */; };
 		BAEADB0F14E267C10080C5A0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEADB0E14E267C10080C5A0 /* Cocoa.framework */; };
 		BAEADB1914E267C10080C5A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BAEADB1714E267C10080C5A0 /* InfoPlist.strings */; };
 		BAEADB1B14E267C10080C5A0 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = BAEADB1A14E267C10080C5A0 /* main.c */; };
@@ -48,13 +50,26 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		BAE0D6FC14EAFF97008ADD22 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		BA00290214E26CB400BA62A5 /* system.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = system.fnt; sourceTree = "<group>"; };
 		BA00290514E26CB400BA62A5 /* post_fragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = post_fragment.glsl; sourceTree = "<group>"; };
 		BA00290614E26CB400BA62A5 /* post_vertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = post_vertex.glsl; sourceTree = "<group>"; };
-		BA39D5E614EAAB8400004AC6 /* libSDL-1.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL-1.2.0.dylib"; path = "usr/local/lib/libSDL-1.2.0.dylib"; sourceTree = SDKROOT; };
-		BA39D5E714EAAB8400004AC6 /* libSDL_image-1.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL_image-1.2.0.dylib"; path = "usr/local/lib/libSDL_image-1.2.0.dylib"; sourceTree = SDKROOT; };
-		BA39D5E814EAAB8400004AC6 /* libSDL_mixer-1.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL_mixer-1.2.0.dylib"; path = "usr/local/lib/libSDL_mixer-1.2.0.dylib"; sourceTree = SDKROOT; };
+		BA30A3E214EB24150023F68E /* libSDL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL.a; path = "../Ext/sdl-static/lib/Mac/libSDL.a"; sourceTree = "<group>"; };
+		BA30A3FC14EB24D90023F68E /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		BA30A40014EB24FF0023F68E /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+		BA30A40C14EB25C00023F68E /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		BA9A1A4414E4B3CF00AB44C4 /* post_fragment_shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = post_fragment_shader.h; sourceTree = "<group>"; };
 		BA9A1A4514E4B3CF00AB44C4 /* post_vertex_shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = post_vertex_shader.h; sourceTree = "<group>"; };
 		BA9A1A4814E4F58100AB44C4 /* renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = renderer.h; sourceTree = "<group>"; };
@@ -84,6 +99,7 @@
 		BAC27A0314EAA329005D47E0 /* SDLMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDLMain.m; sourceTree = "<group>"; };
 		BADB397414E8B97E00F25413 /* system_font.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = system_font.h; sourceTree = "<group>"; };
 		BADB397614E8BA8100F25413 /* system_font_texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = system_font_texture.h; sourceTree = "<group>"; };
+		BAE0D6FA14EAFE5B008ADD22 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		BAEADB0B14E267C00080C5A0 /* Aposelene Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aposelene Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEADB0E14E267C10080C5A0 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		BAEADB1614E267C10080C5A0 /* Demo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Demo-Info.plist"; sourceTree = "<group>"; };
@@ -107,12 +123,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA0028FC14E26B3300BA62A5 /* libAposelene.a in Frameworks */,
 				BAEADB0F14E267C10080C5A0 /* Cocoa.framework in Frameworks */,
 				BAEADB3614E26A220080C5A0 /* OpenGL.framework in Frameworks */,
-				BA39D5EC14EAABE100004AC6 /* libSDL-1.2.0.dylib in Frameworks */,
-				BA39D5ED14EAABE400004AC6 /* libSDL_image-1.2.0.dylib in Frameworks */,
-				BA39D5EE14EAABF900004AC6 /* libSDL_mixer-1.2.0.dylib in Frameworks */,
+				BA30A40D14EB25C00023F68E /* Carbon.framework in Frameworks */,
+				BA30A40114EB24FF0023F68E /* AudioUnit.framework in Frameworks */,
+				BA30A3FD14EB24D90023F68E /* IOKit.framework in Frameworks */,
+				BA0028FC14E26B3300BA62A5 /* libAposelene.a in Frameworks */,
+				BA30A3E314EB24150023F68E /* libSDL.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +212,19 @@
 			path = coin;
 			sourceTree = "<group>";
 		};
+		BACAB73C14EB083500EC1DEE /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				BAEADB0E14E267C10080C5A0 /* Cocoa.framework */,
+				BAF38B7114E2669700859821 /* OpenGL.framework */,
+				BA30A40C14EB25C00023F68E /* Carbon.framework */,
+				BA30A40014EB24FF0023F68E /* AudioUnit.framework */,
+				BA30A3FC14EB24D90023F68E /* IOKit.framework */,
+				BA30A3E214EB24150023F68E /* libSDL.a */,
+			);
+			name = Mac;
+			sourceTree = "<group>";
+		};
 		BACEF97A14EAA15000806C67 /* aposelene */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,11 +258,7 @@
 		BAEADB0D14E267C00080C5A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BAF38B7114E2669700859821 /* OpenGL.framework */,
-				BAEADB0E14E267C10080C5A0 /* Cocoa.framework */,
-				BA39D5E614EAAB8400004AC6 /* libSDL-1.2.0.dylib */,
-				BA39D5E714EAAB8400004AC6 /* libSDL_image-1.2.0.dylib */,
-				BA39D5E814EAAB8400004AC6 /* libSDL_mixer-1.2.0.dylib */,
+				BACAB73C14EB083500EC1DEE /* Mac */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -249,6 +275,7 @@
 		BAEADB1514E267C10080C5A0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BAE0D6FA14EAFE5B008ADD22 /* Icon.icns */,
 				BAC27A0214EAA329005D47E0 /* SDLMain.h */,
 				BAC27A0314EAA329005D47E0 /* SDLMain.m */,
 				BAEADB1614E267C10080C5A0 /* Demo-Info.plist */,
@@ -315,23 +342,6 @@
 		};
 /* End PBXHeadersBuildPhase section */
 
-/* Begin PBXLegacyTarget section */
-		BAEADB2A14E268CB0080C5A0 /* Demo (glfw) */ = {
-			isa = PBXLegacyTarget;
-			buildArgumentsString = "$(ACTION)";
-			buildConfigurationList = BAEADB2B14E268CB0080C5A0 /* Build configuration list for PBXLegacyTarget "Demo (glfw)" */;
-			buildPhases = (
-			);
-			buildToolPath = /usr/bin/make;
-			buildWorkingDirectory = /Users/ambethia/Developer/Aposelene/Demo/glfw;
-			dependencies = (
-			);
-			name = "Demo (glfw)";
-			passBuildSettingsInEnvironment = 1;
-			productName = demo;
-		};
-/* End PBXLegacyTarget section */
-
 /* Begin PBXNativeTarget section */
 		BAEADB0A14E267C00080C5A0 /* Demo (Mac) */ = {
 			isa = PBXNativeTarget;
@@ -340,6 +350,7 @@
 				BAEADB0714E267C00080C5A0 /* Sources */,
 				BAEADB0814E267C00080C5A0 /* Frameworks */,
 				BAEADB0914E267C00080C5A0 /* Resources */,
+				BAE0D6FC14EAFF97008ADD22 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -391,7 +402,6 @@
 			targets = (
 				BAF38B5A14E2657A00859821 /* Aposelene */,
 				BAEADB0A14E267C00080C5A0 /* Demo (Mac) */,
-				BAEADB2A14E268CB0080C5A0 /* Demo (glfw) */,
 			);
 		};
 /* End PBXProject section */
@@ -403,6 +413,7 @@
 			files = (
 				BAEADB1914E267C10080C5A0 /* InfoPlist.strings in Resources */,
 				BAEADB1F14E267C10080C5A0 /* Credits.rtf in Resources */,
+				BAE0D6FB14EAFE5B008ADD22 /* Icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +479,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "../Demo/Mac/Demo-Prefix.pch";
 				INFOPLIST_FILE = "../Demo/Mac/Demo-Info.plist";
+				LIBRARY_SEARCH_PATHS = "${SOURCE_ROOT}/../Ext/sdl-static/lib/Mac";
 				PRODUCT_NAME = "Aposelene Demo";
 				WRAPPER_EXTENSION = app;
 			};
@@ -479,29 +491,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "../Demo/Mac/Demo-Prefix.pch";
 				INFOPLIST_FILE = "../Demo/Mac/Demo-Info.plist";
+				LIBRARY_SEARCH_PATHS = "${SOURCE_ROOT}/../Ext/sdl-static/lib/Mac";
 				PRODUCT_NAME = "Aposelene Demo";
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		BAEADB2C14E268CB0080C5A0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEBUGGING_SYMBOLS = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		BAEADB2D14E268CB0080C5A0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -509,7 +501,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = i386;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -525,7 +517,11 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = (
+					"${SOURCE_ROOT}/../Ext/sdl-static/include/SDL12",
+					"${SOURCE_ROOT}/../Ext/sdl-static/include",
+				);
+				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -536,7 +532,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = i386;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -546,7 +542,11 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = (
+					"${SOURCE_ROOT}/../Ext/sdl-static/include/SDL12",
+					"${SOURCE_ROOT}/../Ext/sdl-static/include",
+				);
+				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				SDKROOT = macosx;
 			};
@@ -556,8 +556,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
-				HEADER_SEARCH_PATHS = "";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -566,8 +564,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
-				HEADER_SEARCH_PATHS = "";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -580,15 +576,6 @@
 			buildConfigurations = (
 				BAEADB2614E267C10080C5A0 /* Debug */,
 				BAEADB2714E267C10080C5A0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BAEADB2B14E268CB0080C5A0 /* Build configuration list for PBXLegacyTarget "Demo (glfw)" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BAEADB2C14E268CB0080C5A0 /* Debug */,
-				BAEADB2D14E268CB0080C5A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

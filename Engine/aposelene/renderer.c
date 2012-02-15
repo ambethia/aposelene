@@ -6,7 +6,7 @@
 //
 
 #include <stdio.h>
-#include <SDL/SDL.h>
+#include <SDL.h>
 
 #include "renderer.h"
 #include "common.h"

@@ -3,3 +3,4 @@
 *.xcuserstate
 *.xcodeproj/project.xcworkspace/xcuserdata/
 *.xcbkptlist
+Ext/src/*
