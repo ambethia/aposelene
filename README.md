@@ -9,10 +9,10 @@ effects on top.
 
 A mock up of the initial concept:
 
-![Goal](https://github.com/ambethia/zero-demo/raw/master/goal.png)
+![Goal](Doc/goal.png)
 
 Result so far:
 
-![Demo](https://github.com/ambethia/zero-demo/raw/master/demo.png)
+![Demo](Doc/demo.png)
 
-![Demo](https://github.com/ambethia/zero-demo/raw/master/sprites.png)
+![Demo](Doc/sprites.png)
